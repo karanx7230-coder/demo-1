@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Himalayan Trails & Tours">
+  <rect width="64" height="64" rx="16" fill="#0B1F3A" />
+  <circle cx="46" cy="18" r="7" fill="#C9A227" />
+  <path d="M8 48 25.5 20 35 35.5 41 26l15 22H8Z" fill="#FAF8F4" />
+  <path d="m19.5 30.5 6 9.5 4-6.5" fill="none" stroke="#1AA6A6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
