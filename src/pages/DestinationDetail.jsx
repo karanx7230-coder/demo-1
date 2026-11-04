@@ -30,9 +30,6 @@ export default function DestinationDetail() {
   }
 
   const relatedPackages = getPackagesByDestination(destination.slug);
-  const otherDestinations = getDestinationBySlug
-    ? null
-    : null;
 
   return (
     <>

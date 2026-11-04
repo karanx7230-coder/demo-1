@@ -1,108 +1,120 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, MessageCircle, Search } from 'lucide-react';
-import { faqs } from '@/data/faqs';
-import { images } from '@/assets/images';
-import { whatsappUrl } from '@/lib/utils';
-import SEO from '@/components/seo/SEO';
-import PageHero from '@/components/layout/PageHero';
+import { useMemo, useState } from 'react';
+import { ArrowRight, HelpCircle, MessageCircle, Phone } from 'lucide-react';
+import Seo from '@/components/seo/Seo';
+import PageHero from '@/components/ui/PageHero';
 import Accordion from '@/components/ui/Accordion';
 import Button from '@/components/ui/Button';
-import Reveal from '@/components/ui/Reveal';
-import { cn } from '@/lib/utils';
-
-const categories = ['All', 'Booking', 'Payments', 'Cancellation', 'Visa', 'Customisation', 'Groups', 'Travel', 'Safety'];
+import { images } from '@/assets/images';
+import { site } from '@/config/site';
+import { faqs } from '@/data/faqs';
+import { cn, whatsappUrl } from '@/lib/utils';
 
 export default function FAQ() {
   const [category, setCategory] = useState('All');
-  const [query, setQuery] = useState('');
 
-  const filtered = faqs.filter((faq) => {
-    const matchesCategory = category === 'All' || faq.category === category;
-    const haystack = `${faq.question} ${faq.answer}`.toLowerCase();
-    return matchesCategory && haystack.includes(query.toLowerCase().trim());
-  });
+  const categories = useMemo(
+    () => ['All', ...Array.from(new Set(faqs.map((item) => item.category)))],
+    [],
+  );
+
+  const filtered = useMemo(
+    () => (category === 'All' ? faqs : faqs.filter((item) => item.category === category)),
+    [category],
+  );
 
   return (
     <>
-      <SEO
-        title="Frequently Asked Questions"
-        description="Answers about booking, payments, cancellation, visas, group sizes and trip support at Himalayan Trails & Tours."
-        image={images.home.intro}
-        path="/faq"
+      <Seo
+        title="FAQs"
+        description="Answers to common questions about booking, payments, cancellations, visas and travelling with Himalayan Trails & Tours."
+        image={images.destinations.manali}
       />
+
       <PageHero
-        eyebrow="Good to know"
-        title="Questions, answered honestly."
-        description="The things travellers ask us most — from advance payments and cancellations to visas and altitude."
-        image={images.home.intro}
-        compact
+        image={images.destinations.manali}
+        eyebrow="Frequently asked"
+        title="The things people ask us most"
+        description="Clear answers on bookings, payments, visas and what happens when plans change. If yours is not here, just ask."
+        breadcrumbs={[{ label: 'FAQs' }]}
+        size="lg"
       />
 
-      <section className="py-14 sm:py-20">
-        <div className="container-page grid gap-10 lg:grid-cols-[260px_1fr] lg:gap-16">
-          <aside>
-            <div className="sticky top-28">
-              <div className="relative">
-                <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-navy-300" />
-                <input
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search questions…"
-                  aria-label="Search FAQs"
-                  className="min-h-11 w-full rounded-xl border border-navy/10 bg-white pl-10 pr-4 text-sm focus:border-gold focus:outline-none"
-                />
-              </div>
-              <div className="mt-5 flex flex-wrap gap-2 lg:flex-col lg:items-start">
-                {categories.map((item) => (
-                  <button
-                    key={item}
-                    type="button"
-                    onClick={() => setCategory(item)}
-                    className={cn(
-                      'rounded-full px-3 py-1.5 text-left text-xs font-medium transition',
-                      category === item ? 'bg-navy text-white' : 'text-navy-500 hover:bg-cream-200 hover:text-navy',
-                    )}
-                  >
-                    {item === 'All' ? 'All questions' : item}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </aside>
-
+      <section className="py-12 sm:py-16">
+        <div className="container-page grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-start">
           <div>
-            <div className="flex items-center justify-between">
-              <h2 className="font-display text-3xl text-navy">{category === 'All' ? 'All questions' : category}</h2>
-              <span className="text-xs text-navy-400">{filtered.length} answers</span>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => setCategory(item)}
+                  className={cn(
+                    'rounded-full px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.12em] transition-colors',
+                    category === item
+                      ? 'bg-navy text-white'
+                      : 'border border-navy/10 bg-white text-navy-500 hover:border-navy/30 hover:text-navy',
+                  )}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
-            <Accordion items={filtered} defaultOpen={0} className="mt-5" />
-            {!filtered.length ? (
-              <p className="rounded-2xl border border-dashed border-navy/15 p-10 text-center text-sm text-navy-500">
-                No answers match that search. Ask us directly and we’ll reply personally.
-              </p>
-            ) : null}
 
-            <Reveal className="mt-10">
-              <div className="rounded-2xl bg-navy p-6 text-white sm:p-8">
-                <p className="eyebrow eyebrow-light">Still wondering?</p>
-                <h2 className="mt-2 font-display text-2xl">We’d rather answer than guess.</h2>
-                <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/55">
-                  Payment plans, visas, hotel upgrades, travelling with children — ask us anything. A real person will reply.
-                </p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <Button to="/contact" size="sm">Send an enquiry <ArrowRight size={14} /></Button>
-                  <Button href={whatsappUrl()} target="_blank" rel="noreferrer" variant="light" size="sm">
-                    <MessageCircle size={14} /> WhatsApp
-                  </Button>
-                </div>
-              </div>
-            </Reveal>
+            <div className="mt-6 rounded-2xl border border-navy/5 bg-white px-6 shadow-soft">
+              <Accordion items={filtered} defaultOpen={0} className="border-t-0" />
+            </div>
 
-            <p className="mt-8 text-xs text-navy-400">
-              Looking for our policies? Read the <Link to="/privacy-policy" className="font-semibold text-teal-700">Privacy Policy</Link> or <Link to="/terms" className="font-semibold text-teal-700">Terms & Conditions</Link>.
+            <p className="mt-4 text-xs text-navy-400">
+              Showing {filtered.length} of {faqs.length} questions
             </p>
           </div>
+
+          <aside className="space-y-4 lg:sticky lg:top-28">
+            <div className="rounded-2xl bg-navy-950 p-6 text-white">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-navy">
+                <HelpCircle className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <h2 className="mt-4 font-display text-2xl">Still have a question?</h2>
+              <p className="mt-2 text-sm leading-relaxed text-white/60">
+                A real coordinator will get back to you within one working day — usually much
+                sooner.
+              </p>
+              <div className="mt-5 space-y-2">
+                <Button to="/contact" variant="gold" size="sm" className="w-full" icon={ArrowRight}>
+                  Send us a message
+                </Button>
+                <Button
+                  href={whatsappUrl()}
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="light"
+                  size="sm"
+                  className="w-full"
+                  icon={MessageCircle}
+                  iconPosition="left"
+                >
+                  WhatsApp us
+                </Button>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-navy/5 bg-white p-6 shadow-soft">
+              <h2 className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-navy-400">
+                Talk to a human
+              </h2>
+              <a
+                href={`tel:${site.contact.phone}`}
+                className="mt-3 flex items-center gap-3 text-sm font-semibold text-navy transition-colors hover:text-gold-700"
+              >
+                <Phone className="h-4 w-4 text-gold-600" aria-hidden="true" />
+                {site.contact.phoneDisplay}
+              </a>
+              <p className="mt-2 text-xs text-navy-400">{site.contact.hours}</p>
+              <p className="mt-4 border-t border-navy/5 pt-4 text-xs leading-relaxed text-navy-400">
+                {site.contact.address.full}
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
     </>
