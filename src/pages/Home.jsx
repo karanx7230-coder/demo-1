@@ -521,7 +521,7 @@ function InstagramStrip() {
       <div className="container-page">
         <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end">
           <div>
-            <span className="eyebrow">@himalayantrails</span>
+            <span className="eyebrow">{site.shortName}</span>
             <h2 className="mt-3 font-display text-2xl font-medium text-navy sm:text-3xl">
               Postcards from the road
             </h2>

@@ -3,43 +3,50 @@
  * Update this file to rebrand the entire site without touching components.
  */
 export const site = {
-  name: 'Himalayan Trails & Tours',
-  shortName: 'Himalayan Trails',
-  initials: 'HT',
-  tagline: 'Explore India & the World, Beautifully.',
+  name: 'Karnail Tour and Travels',
+  shortName: 'Karnail Travels',
+  initials: 'KT',
+  tagline: 'Safe. Smart. Secure.',
+  slogan: 'We serve each mile with an extra smile!',
   description:
-    'A premium travel studio from Mohali, Punjab, crafting thoughtful journeys across India and the world — from Himalayan road trips to handpicked international escapes.',
-  established: 2018,
-  url: 'https://www.himalayantrails.demo',
+    'Karnail Tour and Travels offers safe, reliable tour packages and vehicle hire for the Himalayas and beyond, with every type of vehicle available for Himachal, Spiti Valley, Leh Ladakh, Uttarakhand, Rajasthan and Kashmir.',
+  established: 2015, // APPROX: confirm real year, or hide it in the components
+  url: 'https://www.karnailtours.demo', // TODO: real domain
 
   logo: {
-    mark: '/favicon.svg',
-    alt: 'Himalayan Trails & Tours mountain emblem',
+    mark: '/favicon.svg', // TODO: replace with customer's logo
+    alt: 'Karnail Tour and Travels logo',
   },
 
   contact: {
-    phoneDisplay: '+91 98765 43210',
-    phone: '+919876543210',
-    whatsappDisplay: '+91 98765 43210',
-    whatsapp: '919876543210',
-    whatsappMessage: 'Hi Himalayan Trails! I would like to plan a trip.',
-    email: 'hello@himalayantrails.demo',
-    emailHref: 'mailto:hello@himalayantrails.demo',
+    phoneDisplay: '98156 66135',
+    phone: '+919815666135',
+    phones: [
+      { display: '98156 66135', href: '+919815666135' },
+      { display: '99148 63778', href: '+919914863778' },
+      { display: '98973 20111', href: '+919897320111' },
+    ],
+    whatsappDisplay: '98156 66135', // confirm this number has WhatsApp
+    whatsapp: '919815666135',
+    whatsappMessage: 'Hi Karnail Tour and Travels! I would like to plan a trip.',
+    email: 'karnailtours55@gmail.com',
+    emailHref: 'mailto:karnailtours55@gmail.com',
     address: {
-      line1: 'SCO 24, Phase 7, Industrial Area',
-      city: 'Mohali',
-      state: 'Punjab',
-      postalCode: '160055',
+      line1: 'Main Market', // PLACEHOLDER: replace with real address
+      city: 'Your City', // PLACEHOLDER
+      state: 'Punjab', // PLACEHOLDER
+      postalCode: '', // PLACEHOLDER
       country: 'India',
-      full: 'SCO 24, Phase 7, Industrial Area, Mohali, Punjab 160055, India',
+      full: 'Main Market, Your City, Punjab, India', // PLACEHOLDER
     },
-    hours: 'Mon–Sat, 10:00 AM – 7:00 PM',
-    hoursShort: 'Mon–Sat · 10 AM–7 PM',
+    hours: 'Mon–Sun, 9:00 AM – 8:00 PM', // APPROX
+    hoursShort: 'Daily · 9 AM–8 PM', // APPROX
     mapUrl:
-      'https://www.google.com/maps/search/?api=1&query=SCO+24+Phase+7+Industrial+Area+Mohali+Punjab+160055',
+      'https://www.google.com/maps/search/?api=1&query=Karnail+Tour+and+Travels', // swap for exact share link later
   },
 
   socials: [
+    // TODO: replace with real links, or delete any they don't have
     { label: 'Instagram', href: 'https://www.instagram.com/', icon: 'instagram' },
     { label: 'Facebook', href: 'https://www.facebook.com/', icon: 'facebook' },
     { label: 'YouTube', href: 'https://www.youtube.com/', icon: 'youtube' },
@@ -53,28 +60,62 @@ export const site = {
     maximumFractionDigits: 0,
   },
 
-  departures: ['Chandigarh', 'Mohali', 'Delhi'],
+  destinations: [
+    'Himachal',
+    'Spiti Valley',
+    'Leh Ladakh',
+    'Uttarakhand',
+    'Rajasthan',
+    'Kashmir',
+  ],
+
+  // APPROX: per-person starting prices, ex-Chandigarh, shared vehicle, standard stays
+  startingPrices: {
+    Himachal: { duration: '4N / 5D', price: 8500 },
+    'Spiti Valley': { duration: '7N / 8D', price: 18500 },
+    'Leh Ladakh': { duration: '7N / 8D', price: 24000 },
+    Uttarakhand: { duration: '5N / 6D', price: 10500 },
+    Rajasthan: { duration: '6N / 7D', price: 14500 },
+    Kashmir: { duration: '5N / 6D', price: 16500 },
+  },
+
+  // APPROX: vehicle hire, outstation rates (fuel and driver included, tolls/parking extra)
+  fleet: [
+    { type: 'Sedan (Dzire / Etios)', seats: 4, ratePerKm: 12 },
+    { type: 'SUV (Ertiga)', seats: 6, ratePerKm: 15 },
+    { type: 'Innova Crysta', seats: 7, ratePerKm: 19 },
+    { type: 'Tempo Traveller', seats: 12, ratePerKm: 26 },
+    { type: 'Tempo Traveller (Luxury)', seats: 17, ratePerKm: 32 },
+    { type: 'Mini Bus', seats: 26, ratePerKm: 42 },
+  ],
+  fleetTerms: {
+    minKmPerDay: 250, // APPROX
+    driverNightAllowance: 500, // APPROX
+    note: 'Rates are approximate and vary by season and route. Call for an exact quote.',
+  },
+
+  departures: ['Chandigarh', 'Mohali', 'Delhi'], // APPROX: confirm
 
   booking: {
-    advancePercent: 20,
-    freeCancellationDays: 15,
-    paymentNote: 'Pay just 20% to confirm your booking.',
-    cancellationNote: 'Free cancellation up to 15 days before departure.',
+    advancePercent: 25, // APPROX
+    freeCancellationDays: 7, // APPROX
+    paymentNote: 'Pay 25% in advance to confirm your booking.',
+    cancellationNote: 'Free cancellation up to 7 days before departure.',
   },
 
   seo: {
-    titleTemplate: '%s | Himalayan Trails & Tours',
-    defaultTitle: 'Himalayan Trails & Tours | Explore India & the World, Beautifully',
+    titleTemplate: '%s | Karnail Tour and Travels',
+    defaultTitle: 'Karnail Tour and Travels | Safe. Smart. Secure.',
     description:
-      'Premium domestic and international tour packages from Chandigarh, Mohali and Delhi. Curated itineraries, handpicked stays and 24/7 trip support.',
+      'Tour packages and vehicle hire for Himachal, Spiti Valley, Leh Ladakh, Uttarakhand, Rajasthan and Kashmir. All types of vehicles available.',
     ogImage:
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70',
-    twitterHandle: '@himalayantrails',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70', // stock mountain photo until they send their own
+    twitterHandle: '',
   },
 
   legal: {
-    privacyUpdated: '12 October 2026',
-    termsUpdated: '12 October 2026',
+    privacyUpdated: '4 November 2026',
+    termsUpdated: '4 November 2026',
   },
 };
 

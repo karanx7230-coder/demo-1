@@ -20,7 +20,7 @@ export default function Logo({ light = false, className }) {
             light ? 'text-white' : 'text-navy',
           )}
         >
-          Himalayan Trails
+          {site.shortName}
         </span>
         <span
           className={cn(
@@ -28,7 +28,7 @@ export default function Logo({ light = false, className }) {
             light ? 'text-white/55' : 'text-navy-400',
           )}
         >
-          Tours &amp; Travels
+          {site.tagline}
         </span>
       </span>
     </Link>

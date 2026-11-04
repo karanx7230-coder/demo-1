@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Clock, MapPin, Users } from 'lucide-react';
+import { ArrowUpRight, Clock, Heart, MapPin, Users } from 'lucide-react';
 import Rating from '@/components/ui/Rating';
+import { useWishlist } from '@/context/WishlistContext';
 import { cn, formatCurrency } from '@/lib/utils';
 
 export default function PackageCard({ tour, className, priority = false }) {
+  const { isSaved, toggleItem } = useWishlist();
+  const saved = isSaved(tour.slug);
   const discount = tour.oldPrice
     ? Math.round(((tour.oldPrice - tour.price) / tour.oldPrice) * 100)
     : 0;
@@ -32,11 +35,22 @@ export default function PackageCard({ tour, className, priority = false }) {
           ) : (
             <span />
           )}
-          {discount > 0 ? (
-            <span className="rounded-full bg-gold px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-navy">
-              Save {discount}%
-            </span>
-          ) : null}
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => toggleItem(tour.slug)}
+              aria-pressed={saved}
+              aria-label={saved ? `Remove ${tour.title} from saved trips` : `Save ${tour.title} for later`}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-navy shadow-soft backdrop-blur transition hover:bg-gold"
+            >
+              <Heart className={cn('h-4 w-4', saved && 'fill-red-500 text-red-500')} aria-hidden="true" />
+            </button>
+            {discount > 0 ? (
+              <span className="rounded-full bg-gold px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-navy">
+                Save {discount}%
+              </span>
+            ) : null}
+          </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-navy-950/80 to-transparent px-4 pb-3 pt-10 text-[0.7rem] text-white/85">
           <span className="inline-flex items-center gap-1.5">

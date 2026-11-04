@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock,
+  Heart,
   Info,
   MapPin,
   MessageCircle,
@@ -30,6 +31,7 @@ import Reveal from '@/components/ui/Reveal';
 import NotFound from '@/pages/NotFound';
 import { bookingSteps } from '@/config/navigation';
 import { site } from '@/config/site';
+import { useWishlist } from '@/context/WishlistContext';
 import { getPackageBySlug, featuredPackages } from '@/data/packages';
 import { getDestinationBySlug } from '@/data/destinations';
 import { cn, formatCurrency, formatDate, whatsappUrl } from '@/lib/utils';
@@ -344,21 +346,21 @@ function BookingWidget({ tour }) {
 export default function PackageDetail() {
   const { slug } = useParams();
   const tour = getPackageBySlug(slug);
+  const { isSaved, toggleItem } = useWishlist();
 
   if (!tour) {
     return <NotFound />;
   }
 
+  const saved = isSaved(tour.slug);
   const destination = getDestinationBySlug(tour.destinationSlug);
-  const related = useMemo(() => {
-    const sameDestination = featuredPackages.filter(
-      (item) => item.destinationSlug === tour.destinationSlug && item.slug !== tour.slug,
-    );
-    const fill = featuredPackages.filter(
-      (item) => item.slug !== tour.slug && !sameDestination.some((match) => match.slug === item.slug),
-    );
-    return [...sameDestination, ...fill].slice(0, 3);
-  }, [tour]);
+  const sameDestination = featuredPackages.filter(
+    (item) => item.destinationSlug === tour.destinationSlug && item.slug !== tour.slug,
+  );
+  const fill = featuredPackages.filter(
+    (item) => item.slug !== tour.slug && !sameDestination.some((match) => match.slug === item.slug),
+  );
+  const related = [...sameDestination, ...fill].slice(0, 3);
 
   const itineraryItems = tour.itinerary.map((day) => ({
     title: day.title,
@@ -440,6 +442,34 @@ export default function PackageDetail() {
                 <CalendarDays className="h-4 w-4 text-gold-300" aria-hidden="true" />
                 {tour.bestTime}
               </span>
+            </div>
+
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => toggleItem(tour.slug)}
+                aria-pressed={saved}
+                className={cn(
+                  'inline-flex min-h-10 items-center gap-2 rounded-full border px-4 text-xs font-semibold transition-colors',
+                  saved
+                    ? 'border-gold bg-gold text-navy'
+                    : 'border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white hover:text-navy',
+                )}
+              >
+                <Heart className={cn('h-4 w-4', saved && 'fill-navy')} aria-hidden="true" />
+                {saved ? 'Saved to your shortlist' : 'Save this trip'}
+              </button>
+              <Button
+                href={whatsappUrl(`Hi Himalayan Trails! I'd like to know more about ${tour.title}.`)}
+                target="_blank"
+                rel="noreferrer"
+                variant="gold"
+                size="sm"
+                icon={MessageCircle}
+                iconPosition="left"
+              >
+                Ask on WhatsApp
+              </Button>
             </div>
           </div>
         </div>

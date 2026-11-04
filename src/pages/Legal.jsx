@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Mail } from 'lucide-react';
 import { site } from '@/config/site';
 import Seo from '@/components/seo/Seo';
-import PageHero from '@/components/layout/PageHero';
+import PageHero from '@/components/ui/PageHero';
 import Button from '@/components/ui/Button';
 
 const privacySections = [
   {
     title: '1. Who we are',
-    content:
-      'Himalayan Trails & Tours is a travel agency based at SCO 24, Phase 7, Industrial Area, Mohali, Punjab 160055, India. This policy explains how we collect, use and protect personal information when you enquire about or book a journey with us.',
+    content: `${site.name} is a travel agency based at ${site.contact.address.full}. This policy explains how we collect, use and protect personal information when you enquire about or book a journey with us.`,
   },
   {
     title: '2. Information we collect',
@@ -43,8 +42,7 @@ const privacySections = [
   },
   {
     title: '8. Your rights',
-    content:
-      'You may request access to, correction of, or deletion of the personal information we hold about you. You may also opt out of marketing communications at any time. Write to hello@himalayantrails.demo and we will respond within a reasonable period.',
+    content: `You may request access to, correction of, or deletion of the personal information we hold about you. You may also opt out of marketing communications at any time. Write to ${site.contact.email} and we will respond within a reasonable period.`,
   },
   {
     title: '9. Security',
@@ -53,21 +51,18 @@ const privacySections = [
   },
   {
     title: '10. Updates and contact',
-    content:
-      'We may update this policy to reflect changes in our services or the law. The revised date will appear at the top of this page. For privacy questions, email hello@himalayantrails.demo or call +91 98765 43210.',
+    content: `We may update this policy to reflect changes in our services or the law. The revised date will appear at the top of this page. For privacy questions, email ${site.contact.email} or call ${site.contact.phoneDisplay}.`,
   },
 ];
 
 const termsSections = [
   {
     title: '1. These terms',
-    content:
-      'These Terms & Conditions govern your use of this website and any travel services booked through Himalayan Trails & Tours. By making an enquiry or booking, you confirm that you have read and accepted them on behalf of all travellers in your party.',
+    content: `These Terms & Conditions govern your use of this website and any travel services booked through ${site.name}. By making an enquiry or booking, you confirm that you have read and accepted them on behalf of all travellers in your party.`,
   },
   {
     title: '2. Bookings and payments',
-    content:
-      'A booking is confirmed only when we receive the 20% advance and issue a written confirmation. The balance is due 15 days before departure unless your invoice states otherwise. Failure to pay on time may result in cancellation and loss of the advance.',
+    content: `A booking is confirmed only when we receive the ${site.booking.advancePercent}% advance and issue a written confirmation. The balance is due before departure as stated in your invoice. Failure to pay on time may result in cancellation and loss of the advance.`,
   },
   {
     title: '3. Pricing',
@@ -76,13 +71,11 @@ const termsSections = [
   },
   {
     title: '4. Cancellations and refunds',
-    content:
-      'Cancellations made 15 or more days before departure are eligible for a refund of the booking amount, less non-refundable third-party costs and a documented service fee. Within 15 days, cancellation charges apply as set out in your invoice. Refunds are processed within 10–15 working days.',
+    content: `Free cancellation is available up to ${site.booking.freeCancellationDays} days before departure. After that, cancellation charges apply as set out in your invoice. Refunds are processed within 10–15 working days, less any non-refundable third-party costs.`,
   },
   {
     title: '5. Changes to a booking',
-    content:
-      'We will try to accommodate date or itinerary changes, subject to supplier availability and any applicable charges. Changes requested within 15 days of departure may be treated as a cancellation and rebooking by hotels and airlines.',
+    content: `We will try to accommodate date or itinerary changes, subject to supplier availability and any applicable charges. Changes requested within ${site.booking.freeCancellationDays} days of departure may be treated as a cancellation and rebooking by hotels and airlines.`,
   },
   {
     title: '6. Travel documents',
@@ -106,8 +99,7 @@ const termsSections = [
   },
   {
     title: '10. Governing law',
-    content:
-      'These terms are governed by the laws of India. Any dispute shall be subject to the exclusive jurisdiction of the courts of Mohali, Punjab. For questions, email hello@himalayantrails.demo or call +91 98765 43210.',
+    content: `These terms are governed by the laws of India. Any dispute shall be subject to the exclusive jurisdiction of the courts of ${site.contact.address.city}, ${site.contact.address.state}. For questions, email ${site.contact.email} or call ${site.contact.phoneDisplay}.`,
   },
 ];
 

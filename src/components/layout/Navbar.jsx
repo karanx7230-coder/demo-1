@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Clock, Mail, MapPin, Menu, Phone, X } from 'lucide-react';
+import { Clock, Heart, Mail, MapPin, Menu, Phone, X } from 'lucide-react';
 import { primaryNav } from '@/config/navigation';
 import { site } from '@/config/site';
+import { useWishlist } from '@/context/WishlistContext';
 import { cn, whatsappUrl } from '@/lib/utils';
 import Button from '@/components/ui/Button';
 import Logo from '@/components/layout/Logo';
@@ -12,6 +13,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { count, openWishlist } = useWishlist();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -56,7 +58,7 @@ export default function Navbar() {
             </a>
             <span className="inline-flex items-center gap-2 text-white/50">
               <MapPin className="h-3 w-3" aria-hidden="true" />
-              Mohali, Punjab
+              {site.contact.address.city}, {site.contact.address.state}
             </span>
           </div>
           <div className="flex items-center gap-6">
@@ -94,6 +96,19 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
+            <button
+              type="button"
+              onClick={openWishlist}
+              className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-navy/10 text-navy transition-colors hover:border-navy hover:bg-navy hover:text-white"
+              aria-label={`Open saved trips${count ? `, ${count} saved` : ''}`}
+            >
+              <Heart className="h-4 w-4" aria-hidden="true" />
+              {count > 0 ? (
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold px-1 text-[0.6rem] font-bold text-navy">
+                  {count}
+                </span>
+              ) : null}
+            </button>
             <Button to="/contact" variant="primary" size="sm">
               Plan my trip
             </Button>
@@ -147,6 +162,17 @@ export default function Navbar() {
                 FAQs
                 <span className="text-navy-300">→</span>
               </NavLink>
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false);
+                  openWishlist();
+                }}
+                className="flex items-center justify-between py-4 text-left font-display text-xl text-navy"
+              >
+                Saved trips{count ? ` (${count})` : ''}
+                <Heart className="h-5 w-5 text-gold-600" aria-hidden="true" />
+              </button>
             </nav>
 
             <div className="mt-8 space-y-3">
