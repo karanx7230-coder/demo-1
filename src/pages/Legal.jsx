@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Mail } from 'lucide-react';
 import { site } from '@/config/site';
-import SEO from '@/components/seo/SEO';
+import Seo from '@/components/seo/Seo';
 import PageHero from '@/components/layout/PageHero';
 import Button from '@/components/ui/Button';
 
@@ -119,7 +119,7 @@ export default function Legal({ type = 'privacy' }) {
 
   return (
     <>
-      <SEO
+      <Seo
         title={title}
         description={`${title} for ${site.name}. Last updated ${updated}.`}
         path={isPrivacy ? '/privacy-policy' : '/terms'}
