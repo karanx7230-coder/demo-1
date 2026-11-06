@@ -7,11 +7,11 @@ export default function Logo({ light = false, className }) {
     <Link to="/" className={cn('group inline-flex items-center gap-3', className)} aria-label={`${site.name} home`}>
       <span
         className={cn(
-          'flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border transition-transform duration-300 group-hover:scale-105',
-          light ? 'border-white/20 bg-white/10' : 'border-navy/10 bg-white shadow-soft',
+          'flex h-11 w-14 shrink-0 items-center justify-center  rounded-full ',
+          
         )}
       >
-        <img src={logo} alt="" aria-hidden="true" className="h-8 w-8 object-contain" />
+        <img src={logo} alt="" aria-hidden="true" className="h-29 w-29 object-contain" />
       </span>
       <span className="leading-tight">
         <span
