@@ -7,7 +7,7 @@ export default function Logo({ light = false, className }) {
     <Link to="/" className={cn('group inline-flex items-center gap-3', className)} aria-label={`${site.name} home`}>
       <span
         className={cn(
-          'flex h-11 w-14 shrink-0 items-center justify-center  rounded-full ',
+          'flex h-11 w-11 shrink-0 items-center justify-center  rounded-full ',
           
         )}
       >
