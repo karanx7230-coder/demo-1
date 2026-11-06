@@ -20,7 +20,7 @@ export const images = {
     dharamshala: unsplash('photo-1609920658906-8223bd289001'),
     spiti: unsplash('photo-1597074866923-dc0589150358'),
     kasol: unsplash('photo-1501785888041-af3ef285b470'),
-    kashmir: unsplash('photo-1566837945700-30057527ade0'),
+    kashmir: unsplash('photo-1500993855538-c6a99f437aa7'),
     ladakh: unsplash('photo-1581793745862-99fde7fa73d2'),
     rishikesh: unsplash('photo-1590050752117-238cb0fb12b1'),
     jaipur: unsplash('photo-1477587458883-47145ed94245'),

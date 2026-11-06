@@ -45,39 +45,6 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="hidden bg-navy-950 text-white lg:block">
-        <div className="container-page flex h-9 items-center justify-between text-[0.7rem] tracking-wide">
-          <div className="flex items-center gap-6">
-            <a href={`tel:${site.contact.phone}`} className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white">
-              <Phone className="h-3 w-3" aria-hidden="true" />
-              {site.contact.phoneDisplay}
-            </a>
-            <a href={site.contact.emailHref} className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white">
-              <Mail className="h-3 w-3" aria-hidden="true" />
-              {site.contact.email}
-            </a>
-            <span className="inline-flex items-center gap-2 text-white/50">
-              <MapPin className="h-3 w-3" aria-hidden="true" />
-              {site.contact.address.city}, {site.contact.address.state}
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <span className="inline-flex items-center gap-2 text-white/50">
-              <Clock className="h-3 w-3" aria-hidden="true" />
-              {site.contact.hours}
-            </span>
-            <a
-              href={whatsappUrl()}
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-gold-300 transition-colors hover:text-gold-200"
-            >
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-
       <div
         className={cn(
           'border-b border-navy/5 bg-cream/95 backdrop-blur-lg transition-shadow duration-300',

@@ -23,9 +23,9 @@ function PageLoader() {
   return (
     <div className="flex min-h-[70vh] items-center justify-center bg-cream" role="status" aria-label="Loading page">
       <div className="flex flex-col items-center gap-4">
-        <span className="relative flex size-14 items-center justify-center">
+        <span className="relative flex size-22 items-center justify-center">
           <span className="absolute inset-0 animate-spin rounded-full border-2 border-navy/10 border-t-gold" />
-          <span className="font-display text-lg text-navy">HT</span>
+          <span className="font-display text-lg text-navy">karnail</span>
         </span>
         <span className="text-xs uppercase tracking-[0.22em] text-navy-400">Preparing your journey</span>
       </div>
