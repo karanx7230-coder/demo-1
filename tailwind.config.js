@@ -6,6 +6,19 @@ export default {
   theme: {
     extend: {
       colors: {
+        white: '#FFFFFF',
+        black: '#000000',
+        transparent: 'transparent',
+        current: 'currentColor',
+        brand: {
+          navy: '#0F3D3B',
+          gold: '#6C151E',
+          cream: '#F5DABF',
+          teal: '#1AA6A6',
+          sand: '#D8C0A8',
+          white: '#FFFFFF',
+          black: '#000000',
+        },
         // Green #0F3D3B
         navy: {
           DEFAULT: '#0F3D3B',

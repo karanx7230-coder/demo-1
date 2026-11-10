@@ -12,6 +12,7 @@ export const images = {
     offer: unsplash('photo-1476514525535-07fb3b4ae5f1'),
     cta: unsplash('photo-1500530855697-b586d89ba3ee', 1600),
     newsletter: unsplash('photo-1488646953014-85cb44e25828'),
+    logo: "logo_hq.svg"
   },
 
   destinations: {

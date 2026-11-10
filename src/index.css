@@ -5,6 +5,14 @@
 @layer base {
   :root {
     color-scheme: light;
+    --brand-navy: theme('colors.brand.navy');
+    --brand-gold: theme('colors.brand.gold');
+    --brand-cream: theme('colors.brand.cream');
+    --brand-teal: theme('colors.brand.teal');
+    --brand-sand: theme('colors.brand.sand');
+    --brand-white: theme('colors.white');
+    --brand-black: theme('colors.black');
+    --surface-subtle: theme('colors.cream.100');
     --navbar-height: 5rem;
   }
 
@@ -16,6 +24,8 @@
 
   body {
     @apply bg-cream font-sans text-navy antialiased;
+    background-color: var(--surface-subtle);
+    color: var(--brand-navy);
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
@@ -38,6 +48,8 @@
 
   ::selection {
     @apply bg-gold-200 text-navy;
+    background-color: color-mix(in srgb, var(--brand-gold) 18%, white);
+    color: var(--brand-black);
   }
 
   :focus-visible {
@@ -96,7 +108,7 @@
   .skeleton {
     position: relative;
     overflow: hidden;
-    background-color: #e7eaf0;
+    background-color: var(--surface-subtle);
   }
 
   .skeleton::after {
