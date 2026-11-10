@@ -45,7 +45,7 @@ export default function Contact() {
     <>
       <Seo
         title="Contact Us"
-        description="Plan your next trip with Himalayan Trails & Tours in Mohali, Punjab. Call, WhatsApp or send us a message — we reply within 24 hours."
+        description="Plan your next trip with karnail tour and  travels in Mohali, Punjab. Call, WhatsApp or send us a message — we reply within 24 hours."
         image={images.home.intro}
       />
 
@@ -139,7 +139,7 @@ export default function Contact() {
 
             <div className="overflow-hidden rounded-2xl border border-navy/5 bg-white shadow-soft">
               <iframe
-                title="Himalayan Trails & Tours office location"
+                title="karnail tour and  travels office location"
                 src={mapSrc}
                 className="h-64 w-full border-0"
                 loading="lazy"

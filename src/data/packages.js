@@ -4,7 +4,7 @@ import { images } from '@/assets/images';
  * Tour package content.
  * Every package gets a detail page automatically from its slug.
  */
-export const packages = [
+const allPackages = [
   {
     slug: 'manali-kasol-volvo-getaway',
     title: 'Manali–Kasol Volvo Getaway',
@@ -13,8 +13,7 @@ export const packages = [
     type: 'domestic',
     category: 'Weekend Getaways',
     duration: { days: 5, nights: 4 },
-    price: 8999,
-    oldPrice: 10499,
+    price: 999,
     rating: 4.7,
     reviewCount: 164,
     image: images.packages.manaliKasol,
@@ -46,8 +45,7 @@ export const packages = [
     type: 'domestic',
     category: 'Family',
     duration: { days: 6, nights: 5 },
-    price: 14999,
-    oldPrice: 16999,
+    price: 999,
     rating: 4.8,
     reviewCount: 189,
     image: images.packages.shimlaManali,
@@ -80,8 +78,7 @@ export const packages = [
     type: 'domestic',
     category: 'Adventure',
     duration: { days: 8, nights: 7 },
-    price: 24999,
-    oldPrice: 27999,
+    price: 999,
     rating: 4.9,
     reviewCount: 96,
     image: images.packages.spitiRoadTrip,
@@ -116,8 +113,7 @@ export const packages = [
     type: 'domestic',
     category: 'Adventure',
     duration: { days: 9, nights: 8 },
-    price: 32999,
-    oldPrice: 36999,
+    price: 999,
     rating: 4.9,
     reviewCount: 174,
     image: images.packages.ladakhBike,
@@ -153,8 +149,7 @@ export const packages = [
     type: 'domestic',
     category: 'Honeymoon',
     duration: { days: 7, nights: 6 },
-    price: 28999,
-    oldPrice: 32999,
+    price: 999,
     rating: 4.9,
     reviewCount: 211,
     image: images.packages.kashmirHoneymoon,
@@ -181,6 +176,8 @@ export const packages = [
     exclusions: ['Gondola tickets', 'Pony rides and local taxis', 'Lunch and personal expenses', 'Travel insurance', 'Entry fees'],
   },
 ];
+
+export const packages = allPackages.filter((tour) => tour.type === 'domestic');
 
 export const featuredPackages = packages.filter((tour) => tour.featured);
 

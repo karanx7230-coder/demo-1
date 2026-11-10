@@ -18,7 +18,7 @@ export default function About() {
     <>
       <Seo
         title="Our Story"
-        description="Himalayan Trails & Tours is a small, independent travel studio in Mohali, Punjab, designing thoughtful journeys since 2018."
+        description="karnail tour and  travels is a small, independent travel studio in Mohali, Punjab, designing thoughtful journeys since 2018."
         image={images.about.story}
       />
 
@@ -70,7 +70,7 @@ export default function About() {
               <p>
                 When travel paused in 2020, we rebuilt our supplier network, trained local guides and
                 designed the private-trip model we still use today. Since then we have added Kerala,
-                Rajasthan and a growing list of international journeys — but the pace of a trip still
+                Rajasthan and journeys across India — but the pace of a trip still
                 matters more to us than the number of stops.
               </p>
               <p>

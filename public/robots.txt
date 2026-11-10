@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.himalayantrails.demo/sitemap.xml
+Sitemap: https://www.karnailtourandtravels.demo/sitemap.xml

@@ -26,7 +26,7 @@ export default function FAQ() {
     <>
       <Seo
         title="FAQs"
-        description="Answers to common questions about booking, payments, cancellations, visas and travelling with Himalayan Trails & Tours."
+        description="Answers to common questions about booking, payments, cancellations, visas and travelling with karnail tour and  travels."
         image={images.destinations.manali}
       />
 

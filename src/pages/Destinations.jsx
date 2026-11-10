@@ -8,13 +8,6 @@ import Reveal from '@/components/ui/Reveal';
 import Button from '@/components/ui/Button';
 import { images } from '@/assets/images';
 import { destinations } from '@/data/destinations';
-import { cn } from '@/lib/utils';
-
-const typeFilters = [
-  { id: 'all', label: 'All destinations' },
-  { id: 'domestic', label: 'India' },
-  { id: 'international', label: 'International' },
-];
 
 const sortOptions = [
   { id: 'featured', label: 'Most popular' },
@@ -25,21 +18,19 @@ const sortOptions = [
 
 export default function Destinations() {
   const [query, setQuery] = useState('');
-  const [type, setType] = useState('all');
   const [sort, setSort] = useState('featured');
 
   const results = useMemo(() => {
     const term = query.trim().toLowerCase();
 
     const filtered = destinations.filter((destination) => {
-      const matchesType = type === 'all' || destination.type === type;
       const matchesQuery =
         !term ||
         [destination.name, destination.region, destination.country, destination.tagline, ...destination.tags]
           .join(' ')
           .toLowerCase()
           .includes(term);
-      return matchesType && matchesQuery;
+      return matchesQuery;
     });
 
     const sorted = [...filtered];
@@ -49,28 +40,26 @@ export default function Destinations() {
     if (sort === 'featured') sorted.sort((a, b) => Number(b.featured) - Number(a.featured));
 
     return sorted;
-  }, [query, type, sort]);
+  }, [query, sort]);
 
   return (
     <>
       <Seo
         title="Destinations"
-        description="Explore handpicked destinations across India and the world — from Himachal and Kashmir to Dubai, Bali and Europe."
+        description="Explore handpicked destinations across India — from Himachal and Kashmir to Rajasthan and Kerala."
         image={images.destinations.kashmir}
       />
 
       <PageHero
         image={images.destinations.kashmir}
         eyebrow="Destinations"
-        title="A world of places, carefully chosen"
-        description="Nineteen destinations across India and beyond, each one travelled and tested by our team. Find the landscape that fits your next break."
+        title="India, carefully chosen"
+        description="Explore our destinations across India, each one travelled and tested by our team. Find the landscape that fits your next break."
         breadcrumbs={[{ label: 'Destinations' }]}
         size="lg"
       >
         <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/70">
-          <span><strong className="text-white">{destinations.length}</strong> destinations</span>
-          <span><strong className="text-white">12</strong> in India</span>
-          <span><strong className="text-white">7</strong> international</span>
+          <span><strong className="text-white">{destinations.length}</strong> destinations across India</span>
         </div>
       </PageHero>
 
@@ -78,24 +67,6 @@ export default function Destinations() {
         <div className="container-page">
           <div className="rounded-2xl border border-navy/5 bg-white p-4 shadow-soft sm:p-5">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-              <div className="flex flex-wrap gap-2">
-                {typeFilters.map((filter) => (
-                  <button
-                    key={filter.id}
-                    type="button"
-                    onClick={() => setType(filter.id)}
-                    className={cn(
-                      'rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-colors',
-                      type === filter.id
-                        ? 'bg-navy text-white'
-                        : 'border border-navy/10 text-navy-500 hover:border-navy/30 hover:text-navy',
-                    )}
-                  >
-                    {filter.label}
-                  </button>
-                ))}
-              </div>
-
               <div className="flex flex-col gap-3 sm:flex-row">
                 <div className="relative">
                   <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-300" aria-hidden="true" />
@@ -159,7 +130,6 @@ export default function Destinations() {
                     size="sm"
                     onClick={() => {
                       setQuery('');
-                      setType('all');
                     }}
                   >
                     Clear filters

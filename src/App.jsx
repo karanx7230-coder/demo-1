@@ -1,66 +1,64 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import { WishlistProvider } from '@/context/WishlistContext';
-import Layout from '@/components/layout/Layout';
-import ScrollToTop from '@/components/layout/ScrollToTop';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import Navbar from '@/components/site/Navbar';
+import Hero from '@/components/site/Hero';
+import Marquee from '@/components/site/Marquee';
+import Intro from '@/components/site/Intro';
+import Services from '@/components/site/Services';
+import Fleet from '@/components/site/Fleet';
+import Destinations from '@/components/site/Destinations';
+import RouteStory from '@/components/site/RouteStory';
+import Promise from '@/components/site/Promise';
+import Reviews from '@/components/site/Reviews';
+import Contact from '@/components/site/Contact';
+import Footer from '@/components/site/Footer';
+import StickyBar from '@/components/site/StickyBar';
+import { useSpatialPointer } from '@/components/site/spatial';
 
-const Home = lazy(() => import('@/pages/Home'));
-const Destinations = lazy(() => import('@/pages/Destinations'));
-const DestinationDetail = lazy(() => import('@/pages/DestinationDetail'));
-const Packages = lazy(() => import('@/pages/Packages'));
-const PackageDetail = lazy(() => import('@/pages/PackageDetail'));
-const About = lazy(() => import('@/pages/About'));
-const Gallery = lazy(() => import('@/pages/Gallery'));
-const Blog = lazy(() => import('@/pages/Blog'));
-const BlogPost = lazy(() => import('@/pages/BlogPost'));
-const Contact = lazy(() => import('@/pages/Contact'));
-const FAQ = lazy(() => import('@/pages/FAQ'));
-const Legal = lazy(() => import('@/pages/Legal'));
-const NotFound = lazy(() => import('@/pages/NotFound'));
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 26, restDelta: 0.001 });
 
-function PageLoader() {
   return (
-    <div className="flex min-h-[70vh] items-center justify-center bg-cream" role="status" aria-label="Loading page">
-      <div className="flex flex-col items-center gap-4">
-        <span className="relative flex size-28 items-center justify-center">
-          <span className="absolute inset-0 animate-spin rounded-full border-2 border-navy/10 border-t-gold" />
-          <span className="font-display text-lg text-navy">karnail</span>
-        </span>
-        <span className="text-xs uppercase tracking-[0.22em] text-navy-400">Preparing your journey</span>
-      </div>
-    </div>
+    <motion.div
+      className="fixed inset-x-0 top-0 z-[65] h-[2px] origin-left bg-marigold"
+      style={{ scaleX }}
+      aria-hidden="true"
+    />
   );
 }
 
 export default function App() {
+  useSpatialPointer();
+
   return (
-    <HelmetProvider>
-      <WishlistProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="destinations" element={<Destinations />} />
-                <Route path="destinations/:slug" element={<DestinationDetail />} />
-                <Route path="packages" element={<Packages />} />
-                <Route path="packages/:slug" element={<PackageDetail />} />
-                <Route path="about" element={<About />} />
-                <Route path="gallery" element={<Gallery />} />
-                <Route path="blog" element={<Blog />} />
-                <Route path="blog/:slug" element={<BlogPost />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="faq" element={<FAQ />} />
-                <Route path="privacy-policy" element={<Legal type="privacy" />} />
-                <Route path="terms" element={<Legal type="terms" />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
-      </WishlistProvider>
-    </HelmetProvider>
+    <div className="grain relative min-h-screen bg-cream">
+      <div className="ambient-glow pointer-events-none fixed inset-0 z-[45] hidden mix-blend-soft-light lg:block" aria-hidden="true" />
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[90] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-cream"
+      >
+        Skip to content
+      </a>
+
+      <ScrollProgress />
+      <Navbar />
+
+      <main id="main">
+        <Hero />
+        <Marquee />
+        <Intro />
+        <Services />
+        <Fleet />
+        <Destinations />
+        <RouteStory />
+        <Promise />
+        <Reviews />
+        <Contact />
+      </main>
+
+      <Footer />
+      <div className="h-[4.75rem] bg-ink lg:hidden" aria-hidden="true" />
+      <StickyBar />
+    </div>
   );
 }

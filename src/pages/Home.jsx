@@ -27,7 +27,7 @@ import BlogCard from '@/components/cards/BlogCard';
 import TestimonialCard from '@/components/cards/TestimonialCard';
 import { images } from '@/assets/images';
 import { site } from '@/config/site';
-import { destinations, domesticDestinations, internationalDestinations } from '@/data/destinations';
+import { destinations, domesticDestinations } from '@/data/destinations';
 import { featuredPackages, packageCategories } from '@/data/packages';
 import { whyChooseUs, howItWorks, trustBadges, instagramGallery } from '@/data/content';
 import { testimonials, stats } from '@/data/testimonials';
@@ -65,7 +65,7 @@ function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-            From Himalayan road trips to handpicked international escapes, we design journeys
+            From Himalayan road trips to handpicked escapes across India, we design journeys
             around how you actually like to travel — not a checklist.
           </p>
 
@@ -222,43 +222,18 @@ function StatsStrip() {
 }
 
 function FeaturedDestinations() {
-  const [tab, setTab] = useState('domestic');
-  const list = tab === 'domestic' ? domesticDestinations : internationalDestinations;
-
   return (
     <section className="py-20 sm:py-24">
       <div className="container-page">
         <SectionHeading
           eyebrow="Where to next"
           title="Places we know by heart"
-          description="A curated edit of the regions our team travels, tests and returns to — from the Himalayas to the Indian Ocean."
+          description="A curated edit of the regions our team travels, tests and returns to across India."
           align="between"
-          action={
-            <div className="flex rounded-full border border-navy/10 bg-white p-1" role="tablist" aria-label="Destination type">
-              {[
-                { id: 'domestic', label: 'India' },
-                { id: 'international', label: 'International' },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={tab === item.id}
-                  onClick={() => setTab(item.id)}
-                  className={cn(
-                    'rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-colors',
-                    tab === item.id ? 'bg-navy text-white' : 'text-navy-500 hover:text-navy',
-                  )}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          }
         />
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {list.slice(0, 6).map((destination, index) => (
+          {domesticDestinations.slice(0, 6).map((destination, index) => (
             <Reveal key={destination.slug} delay={(index % 3) * 0.06}>
               <DestinationCard destination={destination} tall className="h-full" />
             </Reveal>

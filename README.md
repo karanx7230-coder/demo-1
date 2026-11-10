@@ -1,4 +1,4 @@
-# Himalayan Trails & Tours
+# karnail tour and  travels
 
 A premium, multi-page travel and tour agency website for a demo agency based in Mohali, Punjab. Built with Vite, React, React Router v6, Tailwind CSS, Framer Motion, Lucide React and React Helmet Async.
 
@@ -102,7 +102,7 @@ Paste a Formspree endpoint such as `https://formspree.io/f/xxxxxxxx` (or adapt t
 
 - Per-page title and description are handled through `src/components/seo/SEO.jsx`.
 - Open Graph and Twitter tags are included.
-- Static `public/robots.txt` and `public/sitemap.xml` are provided. Update the demo domain `himalayantrails.demo` in `src/config/site.js` and the sitemap before launch.
+- Static `public/robots.txt` and `public/sitemap.xml` are provided. Update the demo domain `karnailtourandtravels.demo` in `src/config/site.js` and the sitemap before launch.
 - The sitemap should be regenerated whenever new destinations, packages or posts are added.
 
 ## Deploying

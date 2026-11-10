@@ -84,7 +84,7 @@ export default function Packages() {
     <>
       <Seo
         title="Tour Packages"
-        description="Browse curated domestic and international tour packages from Chandigarh, Mohali and Delhi — with transparent pricing and flexible itineraries."
+        description="Browse curated domestic tour packages from Chandigarh, Mohali and Delhi — with transparent pricing and flexible itineraries."
         image={images.destinations.ladakh}
       />
 

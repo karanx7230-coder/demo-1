@@ -1,9 +1,9 @@
 {
-  "name": "himalayan-trails-tours",
+  "name": "karnail-tour-and-travels",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Premium travel and tour agency website for Himalayan Trails & Tours, Mohali.",
+  "description": "Premium travel and tour agency website for karnail tour and  travels, Mohali.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
