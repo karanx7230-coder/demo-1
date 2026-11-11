@@ -1,16 +1,46 @@
-import { useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { steps, wa } from '@/data/business';
 import { Reveal, SectionLabel, WhatsAppIcon } from './primitives';
+import { prefersReducedMotion } from './spatial';
 
 export default function RouteStory() {
   const ref = useRef(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 0.8', 'end 0.65'],
-  });
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const pathRef = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    const path = pathRef.current;
+    if (!el || !path) return undefined;
+
+    if (prefersReducedMotion()) {
+      path.style.strokeDashoffset = '0';
+      return undefined;
+    }
+
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const rect = el.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, (viewport * 0.8 - rect.top) / (rect.height * 0.75)));
+      path.style.strokeDashoffset = `${(1 - progress).toFixed(3)}`;
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
 
   return (
     <section
@@ -21,7 +51,7 @@ export default function RouteStory() {
         className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
-            'radial-gradient(circle at 1px 1px, rgba(246,239,226,0.9) 1px, transparent 0)',
+            'radial-gradient(circle at 1px 1px, rgba(248,246,240,0.9) 1px, transparent 0)',
           backgroundSize: '26px 26px',
         }}
         aria-hidden="true"
@@ -58,17 +88,19 @@ export default function RouteStory() {
           >
             <path
               d="M20 0 C 20 90, 4 120, 20 200 S 36 300, 20 380 S 4 480, 20 600"
-              stroke="rgba(246,239,226,0.14)"
+              stroke="rgba(248,246,240,0.16)"
               strokeWidth="2"
               strokeDasharray="4 10"
             />
-            <motion.path
+            <path
+              ref={pathRef}
               d="M20 0 C 20 90, 4 120, 20 200 S 36 300, 20 380 S 4 480, 20 600"
-              stroke="#F0A33B"
+              stroke="#E9874D"
               strokeWidth="2.5"
               strokeLinecap="round"
-              strokeDasharray="1 0"
-              style={reduceMotion ? { pathLength: 1 } : { pathLength }}
+              pathLength="1"
+              strokeDasharray="1"
+              strokeDashoffset="1"
             />
           </svg>
 

@@ -1,5 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { useReducedMotion } from 'framer-motion';
+
+export const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
  * Sets two sets of CSS variables on <html>:
@@ -8,11 +11,9 @@ import { useReducedMotion } from 'framer-motion';
  * Only runs on devices with a real pointer. Everything is rAF-throttled.
  */
 export function useSpatialPointer() {
-  const reduceMotion = useReducedMotion();
-
   useEffect(() => {
-    if (reduceMotion) return undefined;
     if (typeof window === 'undefined') return undefined;
+    if (prefersReducedMotion()) return undefined;
     if (window.matchMedia('(hover: none)').matches) return undefined;
 
     const root = document.documentElement;
@@ -42,7 +43,7 @@ export function useSpatialPointer() {
       window.removeEventListener('pointermove', onMove);
       document.removeEventListener('pointerleave', onLeave);
     };
-  }, [reduceMotion]);
+  }, []);
 }
 
 /**
@@ -59,10 +60,9 @@ export function Tilt({
   ...rest
 }) {
   const ref = useRef(null);
-  const reduceMotion = useReducedMotion();
 
   const handleMove = (event) => {
-    if (reduceMotion) return;
+    if (event.pointerType !== 'mouse') return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -97,8 +97,8 @@ export function Tilt({
 }
 
 export function BrandMark({ className, tone = 'pine' }) {
-  const fill = tone === 'cream' ? '#F6EFE2' : '#14382B';
-  const stroke = tone === 'cream' ? '#14382B' : '#F6EFE2';
+  const fill = tone === 'cream' ? '#F8F6F0' : '#315D5C';
+  const stroke = tone === 'cream' ? '#315D5C' : '#F8F6F0';
 
   return (
     <svg viewBox="0 0 64 64" className={className} role="img" aria-label="Karnail Tour and Travels">
@@ -111,7 +111,7 @@ export function BrandMark({ className, tone = 'pine' }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="49" cy="15" r="4.6" fill="#F0A33B" />
+      <circle cx="49" cy="15" r="4.6" fill="#E9874D" />
     </svg>
   );
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, Phone, X } from 'lucide-react';
 import { business, navLinks, tel, wa } from '@/data/business';
 import { ActionLink, WhatsAppIcon, cx } from './primitives';
@@ -34,7 +33,7 @@ export default function Navbar() {
           className={cx(
             'mx-auto flex max-w-[1280px] items-center justify-between gap-4 rounded-full border pl-3 pr-2 transition-all duration-500 ease-smooth sm:pl-4 sm:pr-2.5',
             scrolled
-              ? 'h-[3.9rem] border-ink/10 bg-cream/90 shadow-[0_24px_60px_-30px_rgba(12,20,16,0.55)] backdrop-blur-2xl'
+              ? 'h-[3.9rem] border-ink/10 bg-cream/90 shadow-[0_24px_60px_-30px_rgba(38,56,59,0.45)] backdrop-blur-2xl'
               : 'h-[4.4rem] border-cream/15 bg-ink/25 backdrop-blur-xl',
           )}
         >
@@ -118,83 +117,75 @@ export default function Navbar() {
         </div>
       </header>
 
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            id="mobile-menu"
-            className="fixed inset-0 z-[70] flex flex-col overflow-hidden bg-ink text-cream lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div
-              className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-pine/50 blur-3xl"
-              aria-hidden="true"
-            />
-            <div
-              className="pointer-events-none absolute -left-20 bottom-24 h-64 w-64 rounded-full bg-marigold/10 blur-3xl"
-              aria-hidden="true"
-            />
+      {open ? (
+        <div
+          id="mobile-menu"
+          className="fixed inset-0 z-[70] flex animate-fade-in flex-col overflow-hidden bg-ink text-cream lg:hidden"
+        >
+          <div
+            className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-pine/50 blur-3xl"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -left-20 bottom-24 h-64 w-64 rounded-full bg-marigold/10 blur-3xl"
+            aria-hidden="true"
+          />
 
-            <div className="container-page relative flex h-[5.5rem] shrink-0 items-center justify-between">
-              <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-                <BrandMark className="h-10 w-10" />
-                <span className="leading-none">
-                  <span className="block font-display text-[1.3rem] font-medium">Karnail</span>
-                  <span className="mt-1 block text-[0.5rem] font-semibold uppercase tracking-[0.24em] text-cream/50">
-                    Tour &amp; Travels
-                  </span>
+          <div className="container-page relative flex h-[5.5rem] shrink-0 items-center justify-between">
+            <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+              <BrandMark className="h-10 w-10" />
+              <span className="leading-none">
+                <span className="block font-display text-[1.3rem] font-medium">Karnail</span>
+                <span className="mt-1 block text-[0.5rem] font-semibold uppercase tracking-[0.24em] text-cream/50">
+                  Tour &amp; Travels
+                </span>
+              </span>
+            </a>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream"
+              aria-label="Close menu"
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
+
+          <nav className="container-page relative flex flex-1 flex-col justify-center gap-1" aria-label="Mobile">
+            {navLinks.map((link, index) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="group flex animate-menu-item items-baseline gap-4 border-b border-cream/10 py-3.5"
+                style={{ animationDelay: `${0.06 * index + 0.08}s` }}
+              >
+                <span className="text-[0.6rem] font-semibold tracking-[0.2em] text-marigold">
+                  0{index + 1}
+                </span>
+                <span className="font-display text-[2.35rem] font-light leading-none tracking-tight text-cream transition-colors group-hover:text-marigold">
+                  {link.label}
                 </span>
               </a>
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream"
-                aria-label="Close menu"
-              >
-                <X className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </div>
+            ))}
+          </nav>
 
-            <nav className="container-page relative flex flex-1 flex-col justify-center gap-1" aria-label="Mobile">
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="group flex items-baseline gap-4 border-b border-cream/10 py-3.5"
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.06 * index + 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <span className="text-[0.6rem] font-semibold tracking-[0.2em] text-marigold">
-                    0{index + 1}
-                  </span>
-                  <span className="font-display text-[2.35rem] font-light leading-none tracking-tight text-cream transition-colors group-hover:text-marigold">
-                    {link.label}
-                  </span>
-                </motion.a>
-              ))}
-            </nav>
-
-            <div className="container-page relative shrink-0 pb-8 pt-6">
-              <div className="grid gap-2.5 sm:grid-cols-2">
-                <ActionLink href={wa()} variant="gold" icon={WhatsAppIcon} className="w-full">
-                  Chat on WhatsApp
-                </ActionLink>
-                <ActionLink href={tel} variant="outlineLight" icon={Phone} className="w-full">
-                  Call {business.phoneDisplay}
-                </ActionLink>
-              </div>
-              <p className="mt-5 flex items-center justify-between text-[0.62rem] uppercase tracking-[0.2em] text-cream/40">
-                <span>{business.base}</span>
-                <span>Open {business.hours}</span>
-              </p>
+          <div className="container-page relative shrink-0 pb-8 pt-6">
+            <div className="grid gap-2.5 sm:grid-cols-2">
+              <ActionLink href={wa()} variant="gold" icon={WhatsAppIcon} className="w-full">
+                Chat on WhatsApp
+              </ActionLink>
+              <ActionLink href={tel} variant="outlineLight" icon={Phone} className="w-full">
+                Call {business.phoneDisplay}
+              </ActionLink>
             </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+            <p className="mt-5 flex items-center justify-between text-[0.62rem] uppercase tracking-[0.2em] text-cream/40">
+              <span>{business.base}</span>
+              <span>Open {business.hours}</span>
+            </p>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

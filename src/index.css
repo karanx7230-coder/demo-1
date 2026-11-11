@@ -117,12 +117,37 @@
 
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(246, 239, 226, 0.16);
+    -webkit-text-stroke: 1px rgba(248, 246, 240, 0.18);
   }
 
   .text-outline-ink {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(12, 20, 16, 0.16);
+    -webkit-text-stroke: 1px rgba(38, 56, 59, 0.16);
+  }
+
+  /* ---------- reveal on scroll (IntersectionObserver) ---------- */
+
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-y, 26px), 0);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 
   .grain::before {
@@ -159,8 +184,8 @@
 
   .paper-edge {
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      0 30px 80px -46px rgba(12, 20, 16, 0.55);
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 30px 80px -46px rgba(38, 56, 59, 0.4);
   }
 
   /* ---------- spatial layer ---------- */
@@ -209,23 +234,23 @@
   }
 
   .glass-dark {
-    background: linear-gradient(160deg, rgba(246, 239, 226, 0.1), rgba(12, 20, 16, 0.28));
-    border: 1px solid rgba(246, 239, 226, 0.16);
+    background: linear-gradient(160deg, rgba(248, 246, 240, 0.1), rgba(38, 56, 59, 0.3));
+    border: 1px solid rgba(248, 246, 240, 0.16);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
     backdrop-filter: blur(18px) saturate(140%);
   }
 
   .glass-cream {
-    background: linear-gradient(160deg, rgba(251, 247, 239, 0.92), rgba(246, 239, 226, 0.78));
-    border: 1px solid rgba(12, 20, 16, 0.08);
+    background: linear-gradient(160deg, rgba(253, 252, 249, 0.92), rgba(248, 246, 240, 0.8));
+    border: 1px solid rgba(38, 56, 59, 0.08);
     -webkit-backdrop-filter: blur(16px) saturate(130%);
     backdrop-filter: blur(16px) saturate(130%);
   }
 
   .floor-grid {
     background-image:
-      linear-gradient(to right, rgba(246, 239, 226, 0.12) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(246, 239, 226, 0.12) 1px, transparent 1px);
+      linear-gradient(to right, rgba(248, 246, 240, 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(248, 246, 240, 0.12) 1px, transparent 1px);
     background-size: 64px 64px;
     -webkit-mask-image: radial-gradient(ellipse at 50% 10%, black, transparent 72%);
     mask-image: radial-gradient(ellipse at 50% 10%, black, transparent 72%);
@@ -234,8 +259,8 @@
   .ambient-glow {
     background: radial-gradient(
       620px circle at var(--cx) var(--cy),
-      rgba(240, 163, 59, 0.1),
-      rgba(240, 163, 59, 0.03) 40%,
+      rgba(233, 135, 77, 0.1),
+      rgba(233, 135, 77, 0.03) 40%,
       transparent 70%
     );
   }

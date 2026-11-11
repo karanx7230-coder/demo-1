@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import Navbar from '@/components/site/Navbar';
 import Hero from '@/components/site/Hero';
 import Marquee from '@/components/site/Marquee';
@@ -15,13 +15,38 @@ import StickyBar from '@/components/site/StickyBar';
 import { useSpatialPointer } from '@/components/site/spatial';
 
 function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 26, restDelta: 0.001 });
+  const ref = useRef(null);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      if (ref.current) ref.current.style.transform = `scaleX(${progress})`;
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
 
   return (
-    <motion.div
+    <div
+      ref={ref}
       className="fixed inset-x-0 top-0 z-[65] h-[2px] origin-left bg-marigold"
-      style={{ scaleX }}
+      style={{ transform: 'scaleX(0)' }}
       aria-hidden="true"
     />
   );

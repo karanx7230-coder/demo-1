@@ -1,11 +1,8 @@
 import { useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Briefcase, Luggage, Users } from 'lucide-react';
 import { fleet, wa } from '@/data/business';
 import { Reveal, SectionLabel, WhatsAppIcon } from './primitives';
 import VehicleArt from './VehicleArt';
-
-const ease = [0.22, 1, 0.36, 1];
 
 function Callout({ className, label, value, side = 'left' }) {
   return (
@@ -89,7 +86,7 @@ export default function Fleet() {
                 <div className="floor-grid absolute inset-0 origin-bottom [transform:rotateX(74deg)] opacity-70" />
               </div>
               <div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_62%,rgba(240,163,59,0.14),transparent_58%)]"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_62%,rgba(233,135,77,0.16),transparent_58%)]"
                 aria-hidden="true"
               />
               <span
@@ -118,29 +115,23 @@ export default function Fleet() {
                 <Callout className="bottom-[30%] left-4" label="Model" value={vehicle.note} />
                 <Callout className="bottom-[24%] right-4" label="Fare" value="On request" side="right" />
 
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={vehicle.id}
-                    initial={{ opacity: 0, x: 46 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -46 }}
-                    transition={{ duration: 0.5, ease }}
-                    className="group relative mx-auto w-full max-w-[30rem] px-4 pb-2 pt-6 sm:px-10"
+                <div
+                  key={vehicle.id}
+                  className="group relative mx-auto w-full max-w-[30rem] animate-vehicle-in px-4 pb-2 pt-6 sm:px-10"
+                >
+                  <div
+                    className="layer-3d"
+                    style={{
+                      transform:
+                        'rotateY(calc(var(--carx, 0) * 7deg)) rotateX(calc(var(--cary, 0) * -3deg)) translateZ(40px)',
+                    }}
                   >
-                    <div
-                      className="layer-3d"
-                      style={{
-                        transform:
-                          'rotateY(calc(var(--carx, 0) * 7deg)) rotateX(calc(var(--cary, 0) * -3deg)) translateZ(40px)',
-                      }}
-                    >
-                      <VehicleArt
-                        type={vehicle.art}
-                        className="h-auto w-full drop-shadow-[0_30px_30px_rgba(0,0,0,0.45)]"
-                      />
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+                    <VehicleArt
+                      type={vehicle.art}
+                      className="h-auto w-full drop-shadow-[0_30px_30px_rgba(0,0,0,0.45)]"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="relative mx-5 mb-5 flex flex-wrap items-center justify-between gap-3 border-t border-cream/10 pt-4 sm:mx-8 sm:mb-6">

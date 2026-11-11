@@ -1,29 +1,53 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { ArrowUpRight, Star } from 'lucide-react';
 
 export const cx = (...classes) => classes.filter(Boolean).join(' ');
 
-const ease = [0.22, 1, 0.36, 1];
-
+/**
+ * Fade + rise reveal driven by IntersectionObserver and CSS.
+ * No animation library, no re-renders, one observer per block.
+ */
 export function Reveal({ children, className, delay = 0, y = 26, as = 'div' }) {
-  const reduceMotion = useReducedMotion();
-  const MotionTag = motion[as] || motion.div;
+  const ref = useRef(null);
 
-  if (reduceMotion) {
-    const Tag = as;
-    return <Tag className={className}>{children}</Tag>;
-  }
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return undefined;
+
+    if (typeof IntersectionObserver === 'undefined') {
+      el.classList.add('is-in');
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -70px 0px', threshold: 0.01 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const Tag = as;
 
   return (
-    <MotionTag
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-70px' }}
-      transition={{ duration: 0.8, delay, ease }}
+    <Tag
+      ref={ref}
+      className={cx('reveal', className)}
+      style={{
+        '--reveal-delay': `${Math.round(delay * 1000)}ms`,
+        '--reveal-y': `${y}px`,
+      }}
     >
       {children}
-    </MotionTag>
+    </Tag>
   );
 }
 
@@ -53,7 +77,7 @@ export function WhatsAppIcon({ className }) {
 
 export function Stars({ className }) {
   return (
-    <span className={cx('inline-flex items-center gap-0.5 text-marigold', className)} aria-label="5 out of 5 stars">
+    <span className={cx('inline-flex items-center gap-0.5 text-marigold', className)} role="img" aria-label="Rated 5 out of 5">
       {[0, 1, 2, 3, 4].map((index) => (
         <Star key={index} className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
       ))}
@@ -102,7 +126,7 @@ export function ActionLink({
   );
 }
 
-export function Seal({ id = 'karnail-seal', className, label = 'TRAVEL SAFE · TRAVEL HAPPY · MOHAli · ' }) {
+export function Seal({ id = 'karnail-seal', className, label = 'TRAVEL SAFE · TRAVEL HAPPY · MOHALI · ' }) {
   return (
     <div className={cx('relative aspect-square', className)} aria-hidden="true">
       <svg viewBox="0 0 120 120" className="h-full w-full animate-spin-slow">

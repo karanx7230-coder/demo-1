@@ -66,7 +66,7 @@ export default function Destinations() {
         {destinations.map((place, index) => (
           <Tilt
             key={place.id}
-            className="w-[78vw] shrink-0 snap-start rounded-[1.5rem] bg-ink shadow-[0_40px_90px_-45px_rgba(12,20,16,0.75)] sm:w-[46vw] lg:w-[26rem] xl:w-[27rem]"
+            className="w-[78vw] shrink-0 snap-start rounded-[1.5rem] bg-ink shadow-[0_40px_90px_-45px_rgba(38,56,59,0.5)] sm:w-[46vw] lg:w-[26rem] xl:w-[27rem]"
             max={7}
           >
           <a
