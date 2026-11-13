@@ -1,46 +1,11 @@
-import typography from '@tailwindcss/typography';
+import { colors } from './src/theme/colors.js';
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
-      colors: {
-        transparent: 'transparent',
-        current: 'currentColor',
-        white: '#FFFFFF',
-        black: '#000000',
-
-        ink: {
-          DEFAULT: '#26383B',
-          soft: '#2F4346',
-          muted: '#52666A',
-        },
-        pine: {
-          DEFAULT: '#315D5C',
-          deep: '#203E40',
-          soft: '#3D6E6D',
-          light: '#477D7B',
-        },
-        cream: {
-          DEFAULT: '#F8F6F0',
-          light: '#FDFCF9',
-          deep: '#EFF0EB',
-        },
-        sand: '#E5E8E3',
-        border: '#E5E8E3',
-        marigold: {
-          DEFAULT: '#E9874D',
-          soft: '#F3B48D',
-          deep: '#C9682F',
-        },
-        clay: '#B85C33',
-        blue: '#176C9B',
-        navy: '#26383B',
-        teal: '#315D5C',
-        orange: '#E9874D',
-        light: '#F8F6F0',
-      },
+      colors,
       fontFamily: {
         sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['Fraunces', 'Georgia', 'ui-serif', 'serif'],
@@ -130,5 +95,5 @@ export default {
       },
     },
   },
-  plugins: [typography],
+  plugins: [],
 };

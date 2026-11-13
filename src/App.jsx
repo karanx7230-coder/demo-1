@@ -1,29 +1,30 @@
 import { useEffect, useRef } from 'react';
-import Navbar from '@/components/site/Navbar';
-import Hero from '@/components/site/Hero';
-import Marquee from '@/components/site/Marquee';
-import Intro from '@/components/site/Intro';
-import Services from '@/components/site/Services';
-import Fleet from '@/components/site/Fleet';
-import Destinations from '@/components/site/Destinations';
-import RouteStory from '@/components/site/RouteStory';
-import Promise from '@/components/site/Promise';
-import Reviews from '@/components/site/Reviews';
-import Contact from '@/components/site/Contact';
-import Footer from '@/components/site/Footer';
-import StickyBar from '@/components/site/StickyBar';
-import { useSpatialPointer } from '@/components/site/spatial';
+import Nav from '@/components/next/Nav';
+import Hero from '@/components/next/Hero';
+import Marquee from '@/components/next/Marquee';
+import Journey from '@/components/next/Journey';
+import Fleet from '@/components/next/Fleet';
+import Destinations from '@/components/next/Destinations';
+import Experience from '@/components/next/Experience';
+import Contact from '@/components/next/Contact';
+import Footer from '@/components/next/Footer';
+import StickyBar from '@/components/next/StickyBar';
+import { ScrollTrigger } from '@/lib/gsap';
 
 function ScrollProgress() {
   const ref = useRef(null);
 
   useEffect(() => {
     let frame = 0;
+    let max = 1;
+
+    const measure = () => {
+      max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    };
 
     const update = () => {
       frame = 0;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      const progress = Math.min(1, Math.max(0, window.scrollY / max));
       if (ref.current) ref.current.style.transform = `scaleX(${progress})`;
     };
 
@@ -31,14 +32,20 @@ function ScrollProgress() {
       if (!frame) frame = requestAnimationFrame(update);
     };
 
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+
+    measure();
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', onResize);
 
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 
@@ -53,36 +60,43 @@ function ScrollProgress() {
 }
 
 export default function App() {
-  useSpatialPointer();
+  useEffect(() => {
+    const refresh = () => ScrollTrigger.refresh();
+    const timer = window.setTimeout(refresh, 800);
+
+    window.addEventListener('load', refresh);
+    if (document.fonts?.ready) document.fonts.ready.then(refresh).catch(() => {});
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('load', refresh);
+    };
+  }, []);
 
   return (
-    <div className="grain relative min-h-screen bg-cream">
-      <div className="ambient-glow pointer-events-none fixed inset-0 z-[45] hidden mix-blend-soft-light lg:block" aria-hidden="true" />
+    <div className="relative min-h-screen bg-ink">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[90] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-cream"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[90] focus:rounded-full focus:bg-cream focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-ink"
       >
         Skip to content
       </a>
 
       <ScrollProgress />
-      <Navbar />
+      <Nav />
 
       <main id="main">
         <Hero />
         <Marquee />
-        <Intro />
-        <Services />
+        <Journey />
         <Fleet />
         <Destinations />
-        <RouteStory />
-        <Promise />
-        <Reviews />
+        <Experience />
         <Contact />
       </main>
 
       <Footer />
-      <div className="h-[4.75rem] bg-ink lg:hidden" aria-hidden="true" />
+      <div className="h-[5.25rem] bg-ink lg:hidden" aria-hidden="true" />
       <StickyBar />
     </div>
   );
