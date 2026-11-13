@@ -103,7 +103,7 @@
 
 @layer utilities {
   .container-page {
-    @apply mx-auto w-full max-w-[1340px] px-5 sm:px-8 lg:px-12;
+    @apply mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-14;
   }
 
   .no-scrollbar {
@@ -123,6 +123,67 @@
   .text-outline-ink {
     color: transparent;
     -webkit-text-stroke: 1px rgba(38, 56, 59, 0.16);
+  }
+
+  /* ---------- floating depth type ---------- */
+
+  .ghost-word {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    font-family: 'Fraunces', Georgia, ui-serif, serif;
+    font-weight: 300;
+    line-height: 0.7;
+    letter-spacing: -0.055em;
+    text-transform: uppercase;
+    color: transparent;
+    transform:
+      translate3d(
+        calc(var(--mx, 0) * var(--drift, 80px) * -0.5),
+        calc(
+          (var(--depth, 0.5) - 0.5) * var(--drift, 80px) * -1 +
+            var(--my, 0) * var(--drift, 80px) * -0.22
+        ),
+        0
+      )
+      rotate(var(--rotate, 0deg));
+    transform-origin: 50% 50%;
+    will-change: transform;
+  }
+
+  .ghost-word-ink {
+    -webkit-text-stroke: 1px rgba(38, 56, 59, 0.16);
+  }
+
+  .ghost-word-cream {
+    -webkit-text-stroke: 1px rgba(248, 246, 240, 0.24);
+  }
+
+  .ghost-word-ink-fill {
+    color: rgba(38, 56, 59, 0.05);
+    -webkit-text-stroke: 1px rgba(38, 56, 59, 0.11);
+  }
+
+  .ghost-word-cream-fill {
+    color: rgba(248, 246, 240, 0.05);
+    -webkit-text-stroke: 1px rgba(248, 246, 240, 0.16);
+  }
+
+  .section-air {
+    @apply py-24 sm:py-32 lg:py-40;
+  }
+
+  .section-air-tight {
+    @apply py-20 sm:py-28 lg:py-32;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ghost-word {
+      transform: rotate(var(--rotate, 0deg));
+    }
   }
 
   /* ---------- reveal on scroll (IntersectionObserver) ---------- */

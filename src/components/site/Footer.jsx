@@ -6,8 +6,8 @@ import { BrandMark } from './spatial';
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-cream/10 bg-ink text-cream">
-      <div className="container-page pt-16 sm:pt-20">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+      <div className="container-page pt-20 sm:pt-24">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <a href="#top" className="flex items-center gap-3">
               <BrandMark className="h-12 w-12 rounded-full ring-1 ring-cream/15" />
@@ -15,13 +15,13 @@ export default function Footer() {
                 <span className="block font-display text-[1.5rem] font-medium tracking-tight text-cream">
                   Karnail
                 </span>
-                <span className="mt-1 block text-[0.55rem] font-semibold uppercase tracking-[0.26em] text-cream/45">
+                <span className="mt-1 block text-[0.55rem] font-semibold uppercase tracking-[0.26em] text-cream/70">
                   Tour &amp; Travels
                 </span>
               </span>
             </a>
 
-            <p className="mt-6 max-w-xs text-[0.88rem] leading-relaxed text-cream/50">
+            <p className="mt-6 max-w-xs text-[0.88rem] leading-relaxed text-cream/65">
               Safe, comfortable and reliable cabs and tours from Mohali. Travel safe. Travel happy.
             </p>
 
@@ -47,7 +47,7 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
             <div>
-              <h2 className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-cream/35">
+              <h2 className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-cream/65">
                 Explore
               </h2>
               <ul className="mt-4 space-y-2.5">
@@ -70,7 +70,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h2 className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-cream/35">
+              <h2 className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-cream/65">
                 Services
               </h2>
               <ul className="mt-4 space-y-2.5">
@@ -90,7 +90,7 @@ export default function Footer() {
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <h2 className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-cream/35">
+              <h2 className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-cream/65">
                 Reach us
               </h2>
               <ul className="mt-4 space-y-2.5 text-[0.85rem] text-cream/65">
@@ -111,18 +111,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 select-none overflow-hidden border-t border-cream/10 pt-8">
-          <p className="text-center font-display text-[clamp(3.4rem,13vw,10rem)] font-light leading-[0.8] tracking-tight text-cream/[0.07]">
+        <div className="mt-20 select-none overflow-hidden border-t border-cream/10 pt-10">
+          <p
+            className="text-outline select-none text-center font-display text-[clamp(3.4rem,13vw,10rem)] font-light leading-[0.8] tracking-tight"
+            aria-hidden="true"
+          >
             Karnail
           </p>
         </div>
 
         <div className="flex flex-col-reverse items-center justify-between gap-4 border-t border-cream/10 py-6 sm:flex-row">
-          <p className="text-center text-[0.68rem] tracking-wide text-cream/35 sm:text-left">
+          <p className="text-center text-[0.68rem] tracking-wide text-cream/65 sm:text-left">
             © 2026 {business.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
-            <p className="hidden text-[0.62rem] uppercase tracking-[0.16em] text-cream/25 sm:block">
+            <p className="hidden text-[0.62rem] uppercase tracking-[0.16em] text-cream/60 sm:block">
               Travel Safe · Travel Happy
             </p>
             <a

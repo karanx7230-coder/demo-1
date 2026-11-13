@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { steps, wa } from '@/data/business';
 import { Reveal, SectionLabel, WhatsAppIcon } from './primitives';
+import { GhostWord, useDepth } from './Depth';
 import { prefersReducedMotion } from './spatial';
 
 export default function RouteStory() {
   const ref = useRef(null);
   const pathRef = useRef(null);
+  useDepth(ref);
 
   useEffect(() => {
     const el = ref.current;
@@ -44,7 +46,7 @@ export default function RouteStory() {
 
   return (
     <section
-      className="relative z-[14] -mt-6 overflow-hidden rounded-t-[2rem] bg-pine py-20 text-cream sm:rounded-t-[2.5rem] sm:py-28 lg:py-32"
+      className="relative z-[14] -mt-6 overflow-hidden rounded-t-[2rem] bg-pine py-24 text-cream sm:rounded-t-[2.5rem] sm:py-32 lg:py-40"
       aria-labelledby="route-heading"
     >
       <div
@@ -58,16 +60,25 @@ export default function RouteStory() {
       />
 
       <div className="container-page relative" ref={ref}>
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <Reveal className="lg:col-span-7">
-            <SectionLabel number="05" light>
-              How it works
-            </SectionLabel>
-            <h2 id="route-heading" className="mt-5 font-display text-display-xl font-light text-cream">
-              Three messages.
-              <br />
-              <em className="font-normal italic text-marigold">One good journey.</em>
-            </h2>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
+          <Reveal className="relative lg:col-span-7">
+            <GhostWord
+              tone="cream"
+              drift={90}
+              className="-top-8 right-0 text-[clamp(4rem,12vw,9rem)] sm:-top-12"
+            >
+              Journey
+            </GhostWord>
+            <div className="relative z-10">
+              <SectionLabel number="05" light>
+                How it works
+              </SectionLabel>
+              <h2 id="route-heading" className="mt-6 font-display text-display-xl font-light text-cream">
+                Three messages.
+                <br />
+                <em className="font-normal italic text-marigold">One good journey.</em>
+              </h2>
+            </div>
           </Reveal>
 
           <Reveal className="lg:col-span-5 lg:pb-2" delay={0.1}>
@@ -78,7 +89,7 @@ export default function RouteStory() {
           </Reveal>
         </div>
 
-        <div className="relative mt-14 sm:mt-20">
+        <div className="relative mt-16 sm:mt-24">
           <svg
             className="pointer-events-none absolute left-[1.35rem] top-0 hidden h-full w-8 sm:block"
             viewBox="0 0 40 600"

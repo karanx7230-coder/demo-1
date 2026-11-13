@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { ArrowUpRight, Briefcase, Luggage, Users } from 'lucide-react';
 import { fleet, wa } from '@/data/business';
 import { Reveal, SectionLabel, WhatsAppIcon } from './primitives';
+import { GhostWord, useDepth } from './Depth';
 import VehicleArt from './VehicleArt';
 
 function Callout({ className, label, value, side = 'left' }) {
@@ -19,7 +20,9 @@ function Callout({ className, label, value, side = 'left' }) {
 
 export default function Fleet() {
   const [active, setActive] = useState(fleet[0].id);
+  const sectionRef = useRef(null);
   const stageRef = useRef(null);
+  useDepth(sectionRef);
   const vehicle = fleet.find((item) => item.id === active) || fleet[0];
   const index = fleet.findIndex((item) => item.id === active);
 
@@ -40,8 +43,9 @@ export default function Fleet() {
 
   return (
     <section
+      ref={sectionRef}
       id="fleet"
-      className="relative z-[12] -mt-6 overflow-hidden rounded-t-[2rem] bg-ink py-20 text-cream sm:rounded-t-[2.5rem] sm:py-28 lg:py-32"
+      className="relative z-[12] -mt-6 overflow-hidden rounded-t-[2rem] bg-ink py-24 text-cream sm:rounded-t-[2.5rem] sm:py-32 lg:py-40"
       aria-labelledby="fleet-heading"
     >
       <div
@@ -54,12 +58,12 @@ export default function Fleet() {
       />
 
       <div className="container-page relative">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
           <Reveal className="lg:col-span-7">
             <SectionLabel number="03" light>
               The fleet
             </SectionLabel>
-            <h2 id="fleet-heading" className="mt-5 font-display text-display-xl font-light text-cream">
+            <h2 id="fleet-heading" className="mt-6 font-display text-display-xl font-light text-cream">
               Pick the car.
               <br />
               <em className="font-normal italic text-marigold">We handle the rest.</em>
@@ -74,7 +78,7 @@ export default function Fleet() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-12 lg:gap-10">
+        <div className="mt-16 grid gap-8 lg:mt-20 lg:grid-cols-12 lg:gap-14">
           <Reveal className="lg:col-span-7">
             <div
               ref={stageRef}
@@ -89,6 +93,13 @@ export default function Fleet() {
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_62%,rgba(233,135,77,0.16),transparent_58%)]"
                 aria-hidden="true"
               />
+              <GhostWord
+                tone="cream-fill"
+                drift={120}
+                className="inset-x-0 top-[22%] text-center text-[clamp(4.5rem,11vw,8.5rem)]"
+              >
+                {vehicle.id}
+              </GhostWord>
               <span
                 className="pointer-events-none absolute right-4 top-2 select-none font-display text-[7rem] font-light leading-none text-cream/[0.045] sm:text-[9rem]"
                 aria-hidden="true"

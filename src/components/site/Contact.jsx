@@ -1,13 +1,19 @@
+import { useRef } from 'react';
 import { Clock, MapPin, Phone } from 'lucide-react';
 import { business, tel, wa } from '@/data/business';
 import { Reveal, SectionLabel, WhatsAppIcon } from './primitives';
+import { GhostWord, useDepth } from './Depth';
 import { Tilt } from './spatial';
 
 export default function Contact() {
+  const ref = useRef(null);
+  useDepth(ref);
+
   return (
     <section
+      ref={ref}
       id="contact"
-      className="relative z-[17] -mt-6 overflow-hidden rounded-t-[2rem] bg-ink py-20 text-cream sm:rounded-t-[2.5rem] sm:py-28 lg:py-32"
+      className="relative z-[17] -mt-6 overflow-hidden rounded-t-[2rem] bg-ink py-24 text-cream sm:rounded-t-[2.5rem] sm:py-32 lg:py-40"
       aria-labelledby="contact-heading"
     >
       <div
@@ -20,25 +26,33 @@ export default function Contact() {
       />
 
       <div className="container-page relative">
-        <Reveal className="mx-auto max-w-3xl text-center">
+        <GhostWord
+          tone="cream-fill"
+          drift={120}
+          className="inset-x-0 top-0 text-center text-[clamp(5rem,18vw,14rem)]"
+        >
+          Let&apos;s go
+        </GhostWord>
+
+        <Reveal className="relative z-10 mx-auto max-w-3xl text-center">
           <SectionLabel light className="justify-center">
             One message away
           </SectionLabel>
           <h2
             id="contact-heading"
-            className="mt-5 font-display text-[clamp(2.6rem,7.4vw,5.4rem)] font-light leading-[0.94] tracking-tight text-cream"
+            className="mt-6 font-display text-[clamp(2.6rem,7.4vw,5.4rem)] font-light leading-[0.94] tracking-tight text-cream"
           >
             Tell us where
             <br />
             you&rsquo;re <em className="font-normal italic text-marigold">going.</em>
           </h2>
-          <p className="mx-auto mt-6 max-w-lg text-[0.95rem] leading-relaxed text-cream/60">
+          <p className="mx-auto mt-7 max-w-lg text-[0.95rem] leading-relaxed text-cream/60">
             Send the destination, the date and how many of you are travelling. We will reply with the
             cab, the driver and a clear fare.
           </p>
         </Reveal>
 
-        <Reveal className="mx-auto mt-10 flex max-w-2xl flex-col gap-3 sm:flex-row" delay={0.1}>
+        <Reveal className="relative z-10 mx-auto mt-12 flex max-w-2xl flex-col gap-3 sm:flex-row" delay={0.1}>
           <Tilt className="flex-1 rounded-2xl" max={5}>
           <a
             href={wa('Hi Karnail Tour and Travels, I would like to book a ride. Here are my details:')}
@@ -72,24 +86,24 @@ export default function Contact() {
           </Tilt>
         </Reveal>
 
-        <div className="mx-auto mt-14 grid max-w-3xl gap-px overflow-hidden rounded-2xl border border-cream/10 bg-cream/10 sm:grid-cols-3">
+        <div className="relative z-10 mx-auto mt-16 grid max-w-3xl gap-px overflow-hidden rounded-2xl border border-cream/10 bg-cream/10 sm:grid-cols-3">
           <div className="bg-ink px-5 py-5 text-center">
             <MapPin className="mx-auto h-4 w-4 text-marigold" aria-hidden="true" />
-            <p className="mt-2.5 text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-cream/35">
+            <p className="mt-2.5 text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-cream/70">
               Based in
             </p>
             <p className="mt-1 text-[0.82rem] font-medium text-cream/85">{business.base}</p>
           </div>
           <div className="bg-ink px-5 py-5 text-center">
             <Clock className="mx-auto h-4 w-4 text-marigold" aria-hidden="true" />
-            <p className="mt-2.5 text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-cream/35">
+            <p className="mt-2.5 text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-cream/70">
               Available
             </p>
             <p className="mt-1 text-[0.82rem] font-medium text-cream/85">Open {business.hours}</p>
           </div>
           <div className="bg-ink px-5 py-5 text-center">
             <WhatsAppIcon className="mx-auto h-4 w-4 text-marigold" />
-            <p className="mt-2.5 text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-cream/35">
+            <p className="mt-2.5 text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-cream/70">
               Serving
             </p>
             <p className="mt-1 text-[0.82rem] font-medium text-cream/85">Punjab · Himachal · Beyond</p>

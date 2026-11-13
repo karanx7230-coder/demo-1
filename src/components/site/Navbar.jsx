@@ -40,7 +40,6 @@ export default function Navbar() {
           <a
             href="#top"
             className="group flex items-center gap-2.5"
-            aria-label={`${business.name} — back to top`}
             onClick={() => setOpen(false)}
           >
             <BrandMark className="h-9 w-9 shrink-0 rounded-full ring-1 ring-cream/20 transition-transform duration-500 group-hover:rotate-6 sm:h-10 sm:w-10" />
@@ -62,6 +61,7 @@ export default function Navbar() {
                 Tour &amp; Travels
               </span>
             </span>
+            <span className="sr-only"> — back to top</span>
           </a>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">

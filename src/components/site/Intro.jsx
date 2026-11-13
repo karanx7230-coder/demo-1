@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import peaks from '@/assets/img/peaks.webp';
 import { Reveal, Seal, SectionLabel } from './primitives';
+import { GhostWord, useDepth } from './Depth';
 import { Tilt } from './spatial';
 
 const stats = [
@@ -11,31 +13,34 @@ const stats = [
 ];
 
 export default function Intro() {
+  const ref = useRef(null);
+  useDepth(ref);
+
   return (
-    <section className="relative bg-cream py-20 sm:py-28 lg:py-32" aria-labelledby="intro-heading">
+    <section ref={ref} className="relative bg-cream py-24 sm:py-32 lg:py-40" aria-labelledby="intro-heading">
       <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <Reveal className="lg:col-span-7">
             <SectionLabel number="01">The idea</SectionLabel>
-            <h2 id="intro-heading" className="mt-5 font-display text-display-xl font-light text-ink">
+            <h2 id="intro-heading" className="mt-6 font-display text-display-xl font-light text-ink">
               A cab is a cab.
               <br />
               <em className="font-normal italic text-pine">A journey</em> is something else.
             </h2>
           </Reveal>
 
-          <Reveal className="lg:col-span-5 lg:pt-12" delay={0.1}>
+          <Reveal className="lg:col-span-5 lg:pt-14" delay={0.1}>
             <p className="text-[0.98rem] leading-relaxed text-ink/65 sm:text-base">
               Karnail Tour and Travels is a family-run travel service in Mohali. We started with one
               simple belief: the ride should feel as good as the destination. Clean cars, calm
               drivers, honest fares — and a real person on the other end of the phone.
             </p>
-            <p className="mt-4 text-[0.98rem] leading-relaxed text-ink/65 sm:text-base">
+            <p className="mt-5 text-[0.98rem] leading-relaxed text-ink/65 sm:text-base">
               Whether it is a 4 AM airport run or a week in the mountains, we plan around you. No
               call centres. No hidden charges. Just the road, handled.
             </p>
 
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-9 flex items-center gap-4">
               <Seal className="w-16 shrink-0 text-pine" id="intro-seal" />
               <p className="text-[0.62rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-ink/45">
                 Family-run in Mohali
@@ -46,22 +51,29 @@ export default function Intro() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-ink/15 pt-8 sm:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-ink/15 pt-10 sm:grid-cols-4">
           {stats.map((stat, index) => (
             <Reveal key={stat.label} delay={0.05 * index}>
               <p className="font-display text-[2.6rem] font-light leading-none tracking-tight text-ink sm:text-[3.2rem]">
                 {stat.value}
               </p>
-              <p className="mt-2 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ink/45 sm:text-[0.68rem]">
+              <p className="mt-3 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ink/45 sm:text-[0.68rem]">
                 {stat.label}
               </p>
             </Reveal>
           ))}
         </div>
 
-        <Reveal className="mt-14">
+        <Reveal className="mt-20 sm:mt-24">
           <div className="relative">
-            <Tilt className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem]" max={4}>
+            <GhostWord
+              tone="ink-fill"
+              drift={100}
+              className="-top-10 left-[-1%] text-[clamp(4.5rem,15vw,12rem)] sm:-top-16"
+            >
+              Himalaya
+            </GhostWord>
+            <Tilt className="relative z-10 overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem]" max={4}>
               <img
                 src={peaks}
                 alt="Snow-capped Himalayan peaks at first light"

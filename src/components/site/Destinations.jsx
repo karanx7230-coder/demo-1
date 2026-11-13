@@ -2,10 +2,13 @@ import { useRef } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin } from 'lucide-react';
 import { destinations } from '@/data/business';
 import { Reveal, SectionLabel } from './primitives';
+import { GhostWord, useDepth } from './Depth';
 import { Tilt } from './spatial';
 
 export default function Destinations() {
   const railRef = useRef(null);
+  const sectionRef = useRef(null);
+  useDepth(sectionRef);
 
   const scrollBy = (direction) => {
     const rail = railRef.current;
@@ -16,15 +19,16 @@ export default function Destinations() {
 
   return (
     <section
+      ref={sectionRef}
       id="destinations"
-      className="relative z-[13] -mt-6 overflow-hidden rounded-t-[2rem] bg-cream py-20 sm:rounded-t-[2.5rem] sm:py-28 lg:py-32"
+      className="relative z-[13] -mt-6 overflow-hidden rounded-t-[2rem] bg-cream py-24 sm:rounded-t-[2.5rem] sm:py-32 lg:py-40"
       aria-labelledby="destinations-heading"
     >
       <div className="container-page">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
           <Reveal className="lg:col-span-7">
             <SectionLabel number="04">Where to</SectionLabel>
-            <h2 id="destinations-heading" className="mt-5 font-display text-display-xl font-light text-ink">
+            <h2 id="destinations-heading" className="mt-6 font-display text-display-xl font-light text-ink">
               Some places are
               <br />
               <em className="font-normal italic text-pine">worth the drive.</em>
@@ -36,7 +40,7 @@ export default function Destinations() {
               The classics, plus a few the regulars keep coming back to. Every route can be a quick
               one-way drop or a full tour with stays — you decide the pace.
             </p>
-            <div className="mt-5 flex items-center gap-2">
+            <div className="mt-6 flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => scrollBy(-1)}
@@ -58,11 +62,20 @@ export default function Destinations() {
         </div>
       </div>
 
-      <div
-        ref={railRef}
-        className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-5 pb-2 sm:gap-5 sm:px-8 lg:px-12"
-        style={{ scrollPaddingLeft: '1.25rem' }}
-      >
+      <div className="relative mt-16 sm:mt-20">
+        <GhostWord
+          tone="ink"
+          drift={110}
+          className="left-8 top-[-2.5rem] text-[clamp(5rem,15vw,12rem)] sm:left-12 lg:left-14"
+        >
+          Wander
+        </GhostWord>
+
+        <div
+          ref={railRef}
+          className="no-scrollbar relative z-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-6 pb-2 sm:gap-5 sm:px-10 lg:px-14"
+          style={{ scrollPaddingLeft: '1.25rem' }}
+        >
         {destinations.map((place, index) => (
           <Tilt
             key={place.id}
@@ -137,6 +150,7 @@ export default function Destinations() {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

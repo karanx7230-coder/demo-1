@@ -4,6 +4,7 @@ import heroImage from '@/assets/img/hero.webp';
 import heroMobile from '@/assets/img/hero-mobile.webp';
 import { business, tel, wa } from '@/data/business';
 import { ActionLink, Seal, SectionLabel, WhatsAppIcon } from './primitives';
+import { GhostWord, useDepth } from './Depth';
 import { Tilt, prefersReducedMotion } from './spatial';
 
 const facts = [
@@ -14,6 +15,7 @@ const facts = [
 
 export default function Hero() {
   const ref = useRef(null);
+  useDepth(ref);
 
   useEffect(() => {
     const el = ref.current;
@@ -109,28 +111,28 @@ export default function Hero() {
       </div>
 
       <div
-        className="container-page relative z-10 flex flex-1 flex-col justify-end pb-10 pt-32 sm:pb-14 lg:pb-16"
+        className="container-page relative z-10 flex flex-1 flex-col justify-end pb-16 pt-36 sm:pb-20 sm:pt-40 lg:pb-24"
         style={{
           transform: 'translate3d(0, var(--content-y, 0%), 0)',
           opacity: 'var(--content-o, 1)',
         }}
       >
-        <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-8">
+        <div className="grid items-end gap-16 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-8">
             <SectionLabel light>Mohali, Punjab · Open 24/7</SectionLabel>
 
-            <h1 className="mt-5 animate-fade-up font-display text-display-hero font-light text-cream">
+            <h1 className="mt-6 animate-fade-up font-display text-display-hero font-light text-cream">
               Travel safe.
               <br />
               Travel <em className="font-normal italic text-marigold">happy.</em>
             </h1>
 
-            <p className="mt-6 max-w-xl text-[0.98rem] leading-relaxed text-cream/75 sm:text-lg">
+            <p className="mt-8 max-w-xl text-[0.98rem] leading-relaxed text-cream/75 sm:text-lg">
               Cabs, outstation drives and handpicked tours from Mohali — with drivers who know the
               road and a team that picks up on the first ring.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <ActionLink href={wa()} variant="gold" icon={WhatsAppIcon} className="w-full sm:w-auto">
                 Book on WhatsApp
               </ActionLink>
@@ -139,20 +141,28 @@ export default function Hero() {
               </ActionLink>
             </div>
 
-            <p className="mt-4 text-[0.72rem] tracking-wide text-cream/55">
+            <p className="mt-5 text-[0.72rem] tracking-wide text-cream/55">
               No forms. No call centres. Just a real person on WhatsApp.
             </p>
           </div>
 
-          <div className="lg:col-span-4">
-            <Tilt className="mx-auto w-full max-w-sm rounded-2xl lg:ml-auto lg:mr-0" max={9}>
+          <div className="relative lg:col-span-4">
+            <GhostWord
+              tone="cream"
+              drift={120}
+              rotate={-5}
+              className="bottom-[-3.5rem] right-[-14%] text-[clamp(5.5rem,16vw,10rem)]"
+            >
+              happy
+            </GhostWord>
+            <Tilt className="relative z-10 mx-auto w-full max-w-sm rounded-2xl lg:ml-auto lg:mr-0" max={9}>
               <a
                 href={wa('Hi, I would like to plan a Manali trip from Mohali. Could you share the cab options and fare?')}
                 target="_blank"
                 rel="noreferrer"
                 className="group relative block rounded-2xl bg-cream p-6 text-ink shadow-[0_60px_120px_-40px_rgba(0,0,0,0.7)]"
               >
-                <div className="flex items-center justify-between text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-ink/60">
+                <div className="flex items-center justify-between text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-ink/75">
                   <span>Your next ride</span>
                   <span className="rounded-full border border-ink/15 px-2 py-1">One way</span>
                 </div>
@@ -162,7 +172,7 @@ export default function Hero() {
                   <ArrowRight className="h-5 w-5 shrink-0 text-marigold" aria-hidden="true" />
                   <span>Manali</span>
                 </div>
-                <p className="mt-2 text-[0.72rem] text-ink/65">Private cab · 7–8 hrs · Doorstep pickup</p>
+                <p className="mt-2 text-[0.72rem] text-ink/75">Private cab · 7–8 hrs · Doorstep pickup</p>
 
                 <div className="relative my-5 border-t border-dashed border-ink/20">
                   <span className="absolute -left-8 -top-[9px] h-[18px] w-[18px] rounded-full bg-ink" aria-hidden="true" />
@@ -171,7 +181,7 @@ export default function Hero() {
 
                 <div className="flex items-end justify-between gap-4">
                   <div>
-                    <p className="text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-ink/60">Fare</p>
+                    <p className="text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-ink/75">Fare</p>
                     <p className="mt-1 font-display text-lg font-medium">On request</p>
                   </div>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-[0.7rem] font-semibold text-cream transition-colors group-hover:bg-pine">

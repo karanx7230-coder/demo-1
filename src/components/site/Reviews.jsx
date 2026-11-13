@@ -1,5 +1,7 @@
+import { useRef } from 'react';
 import { reviews } from '@/data/business';
 import { Reveal, SectionLabel, Stars } from './primitives';
+import { GhostWord, useDepth } from './Depth';
 import { Tilt } from './spatial';
 
 function ReviewCard({ review }) {
@@ -18,7 +20,7 @@ function ReviewCard({ review }) {
         </span>
         <span className="text-[0.78rem]">
           <span className="block font-semibold text-ink">{review.name}</span>
-          <span className="block text-ink/45">{review.city}</span>
+          <span className="block text-ink/70">{review.city}</span>
         </span>
       </figcaption>
     </figure>
@@ -27,17 +29,21 @@ function ReviewCard({ review }) {
 }
 
 export default function Reviews() {
+  const ref = useRef(null);
+  useDepth(ref);
+
   return (
     <section
+      ref={ref}
       id="reviews"
-      className="relative z-[16] -mt-6 overflow-hidden rounded-t-[2rem] bg-cream py-20 sm:rounded-t-[2.5rem] sm:py-28 lg:py-32"
+      className="relative z-[16] -mt-6 overflow-hidden rounded-t-[2rem] bg-cream py-24 sm:rounded-t-[2.5rem] sm:py-32 lg:py-40"
       aria-labelledby="reviews-heading"
     >
       <div className="container-page">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
           <Reveal className="lg:col-span-7">
             <SectionLabel number="07">Kind words</SectionLabel>
-            <h2 id="reviews-heading" className="mt-5 font-display text-display-xl font-light text-ink">
+            <h2 id="reviews-heading" className="mt-6 font-display text-display-xl font-light text-ink">
               People come back.
               <br />
               <em className="font-normal italic text-pine">That is the review.</em>
@@ -49,7 +55,7 @@ export default function Reviews() {
               <p className="font-display text-[4.5rem] font-light leading-none tracking-tight text-ink">5.0</p>
               <div className="pb-2">
                 <Stars className="text-pine" />
-                <p className="mt-2 text-[0.68rem] uppercase tracking-[0.16em] text-ink/45">
+                <p className="mt-3 text-[0.68rem] uppercase tracking-[0.16em] text-ink/45">
                   From riders across Punjab
                 </p>
               </div>
@@ -58,20 +64,29 @@ export default function Reviews() {
         </div>
       </div>
 
-      <div className="pause-on-hover mt-12 overflow-hidden">
-        <div className="flex w-max animate-marquee-slow gap-4 sm:gap-5">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="flex shrink-0 gap-4 sm:gap-5" aria-hidden={copy === 1 || undefined}>
-              {reviews.map((review) => (
-                <ReviewCard key={`${copy}-${review.name}`} review={review} />
-              ))}
-            </div>
-          ))}
+      <div className="relative mt-16 sm:mt-20">
+        <GhostWord
+          tone="ink"
+          drift={100}
+          className="right-8 top-[-3.5rem] text-[clamp(4rem,12vw,9rem)] sm:right-12 lg:right-14"
+        >
+          Riders
+        </GhostWord>
+        <div className="pause-on-hover relative z-10 overflow-hidden">
+          <div className="flex w-max animate-marquee-slow gap-4 sm:gap-5">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="flex shrink-0 gap-4 sm:gap-5" aria-hidden={copy === 1 || undefined}>
+                {reviews.map((review) => (
+                  <ReviewCard key={`${copy}-${review.name}`} review={review} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="container-page mt-8">
-        <p className="text-[0.62rem] uppercase tracking-[0.18em] text-ink/35">
+      <div className="container-page mt-10">
+        <p className="text-[0.62rem] uppercase tracking-[0.18em] text-ink/70">
           Reviews shared by our riders · Names shortened for privacy
         </p>
       </div>
