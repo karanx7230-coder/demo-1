@@ -5,16 +5,6 @@ export const navLinks = [
   { label: 'Experience', href: '#experience' },
 ];
 
-export const marqueeItems = [
-  'Airport transfers',
-  'Outstation cabs',
-  'Himalayan road trips',
-  'Wedding transport',
-  'Corporate travel',
-  'Tour packages',
-  'Local sightseeing',
-];
-
 export const fleet = [
   {
     id: 'sedan',
@@ -70,12 +60,6 @@ export const destinations = [
     image: '/assets/destinations/mountains-02.webp',
     meta: 'Leh · 9 days',
     copy: 'Thin air, wide skies and the road trip people talk about for years.',
-  },
-  {
-    name: 'The open road',
-    image: '/assets/destinations/highway-aerial.webp',
-    meta: 'Anywhere · your pace',
-    copy: 'No fixed itinerary. Tell us the direction and we will build the route.',
   },
 ];
 

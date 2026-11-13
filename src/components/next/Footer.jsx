@@ -58,7 +58,7 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
             <div>
-              <h2 className="font-display text-[1.4rem] font-light text-cream">Explore</h2>
+              <h2 className="font-display text-[1.4rem] font-light text-cream">Menu</h2>
               <ul className="mt-6 space-y-4">
                 {navLinks.map((link) => (
                   <li key={link.href}>

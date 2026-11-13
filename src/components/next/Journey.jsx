@@ -113,7 +113,7 @@ export default function Journey() {
             <div className="journey-frame relative overflow-hidden border border-cream/15 shadow-[0_60px_120px_-50px_rgba(0,0,0,0.85)]">
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <img
-                  src="/assets/hero/hero-road.webp"
+                  src="/assets/destinations/himachal-01.webp"
                   alt="The road out of Mohali climbing into the hills"
                   loading="lazy"
                   decoding="async"

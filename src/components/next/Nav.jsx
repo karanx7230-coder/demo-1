@@ -35,7 +35,7 @@ export default function Nav() {
             dark ? 'border-ink/10 bg-cream/95 text-ink' : 'border-cream/15 bg-transparent text-cream',
           )}
         >
-          <div className="container-page flex h-[5.5rem] items-center justify-between gap-6">
+          <div className="container-page relative flex h-[5.5rem] items-center justify-between gap-6">
             <a
               href="#top"
               className="group flex shrink-0 items-center gap-3.5"
@@ -62,7 +62,10 @@ export default function Nav() {
               </span>
             </a>
 
-            <nav className="hidden items-center gap-8 lg:flex xl:gap-10" aria-label="Primary">
+            <nav
+              className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex xl:gap-10"
+              aria-label="Primary"
+            >
               {navLinks.map((link) => (
                 <a
                   key={link.href}

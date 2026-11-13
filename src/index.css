@@ -29,7 +29,7 @@
 @layer base {
   :root {
     color-scheme: light;
-    --nav-height: 5.25rem;
+    --nav-height: 5.5rem;
   }
 
   html {
@@ -134,13 +134,338 @@
   }
 }
 
-/* ---------- reduced-motion layout fallbacks for pinned scenes ---------- */
+/* ------------------------------------------------------------------
+   Cinematic hero — a layered 3D scene with an After Effects feel.
+   Depth comes from translateZ on flat layers + a moving perspective
+   floor. Everything is composited inside one perspective stage.
+   ------------------------------------------------------------------ */
 
-@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+.hero-stage {
+  perspective: 1300px;
+  perspective-origin: 50% 44%;
+}
+
+.hero-camera,
+.hero-push {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hero-photo {
+  filter: saturate(0.88) contrast(1.06);
+  will-change: transform, filter;
+}
+
+.hero-grade {
+  background:
+    radial-gradient(ellipse at 76% 14%, rgba(233, 135, 77, 0.32), transparent 54%),
+    radial-gradient(ellipse at 16% 88%, rgba(49, 93, 92, 0.55), transparent 58%),
+    linear-gradient(
+      104deg,
+      rgba(8, 18, 17, 0.94) 0%,
+      rgba(8, 18, 17, 0.66) 36%,
+      rgba(8, 18, 17, 0.1) 64%,
+      rgba(8, 18, 17, 0.5) 100%
+    );
+}
+
+.hero-shade {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 15, 14, 0.3) 0%,
+    rgba(7, 15, 14, 0.42) 45%,
+    rgba(7, 15, 14, 0.97) 100%
+  );
+  opacity: 0;
+}
+
+.hero-vignette {
+  background:
+    radial-gradient(ellipse at 50% 44%, transparent 30%, rgba(5, 12, 11, 0.5) 76%, rgba(5, 12, 11, 0.9) 100%),
+    linear-gradient(
+      180deg,
+      rgba(5, 12, 11, 0.68) 0%,
+      transparent 22%,
+      transparent 72%,
+      rgba(5, 12, 11, 0.85) 100%
+    );
+  pointer-events: none;
+}
+
+.hero-floor {
+  position: absolute;
+  left: 50%;
+  bottom: -18%;
+  width: 260%;
+  height: 84%;
+  transform: translateX(-50%) rotateX(74deg);
+  transform-origin: 50% 100%;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(233, 135, 77, 0.24) 0 1px, transparent 1px 150px),
+    repeating-linear-gradient(0deg, rgba(233, 135, 77, 0.2) 0 1px, transparent 1px 92px);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 88%, #000 8%, transparent 62%);
+  mask-image: radial-gradient(ellipse at 50% 88%, #000 8%, transparent 62%);
+  opacity: 0.42;
+  pointer-events: none;
+  will-change: background-position, opacity;
+}
+
+.hero-motes {
+  pointer-events: none;
+}
+
+.hero-mote {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(248, 246, 240, 0.6);
+  filter: blur(0.5px);
+  animation-name: hero-mote-rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes hero-mote-rise {
+  0% {
+    transform: translate3d(0, 18px, 0) scale(0.7);
+    opacity: 0;
+  }
+  16% {
+    opacity: 0.5;
+  }
+  82% {
+    opacity: 0.34;
+  }
+  100% {
+    transform: translate3d(22px, -150px, 0) scale(1.15);
+    opacity: 0;
+  }
+}
+
+.hero-ridge {
+  position: absolute;
+  left: -10%;
+  bottom: -2%;
+  width: 120%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero-ridge-back {
+  height: 32%;
+  opacity: 0.72;
+}
+
+.hero-ridge-front {
+  height: 25%;
+}
+
+.hero-leak {
+  pointer-events: none;
+}
+
+.hero-leak-glow {
+  background:
+    radial-gradient(ellipse at 78% 18%, rgba(233, 135, 77, 0.36), transparent 46%),
+    radial-gradient(ellipse at 24% 84%, rgba(49, 93, 92, 0.42), transparent 52%);
+  mix-blend-mode: screen;
+  animation: hero-leak-breathe 12s ease-in-out infinite;
+}
+
+@keyframes hero-leak-breathe {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.68;
+  }
+  50% {
+    transform: translate3d(-1.5%, 1%, 0) scale(1.07);
+    opacity: 1;
+  }
+}
+
+.hero-title-layer {
+  will-change: transform, opacity;
+}
+
+.hero-title {
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  text-wrap: nowrap;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.hero-line {
+  display: block;
+  transform-origin: 50% 100%;
+}
+
+.hero-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(248, 246, 240, 0.8);
+  text-shadow: 0 0 70px rgba(233, 135, 77, 0.3);
+}
+
+.hero-outline em {
+  color: #e9874d;
+  font-style: italic;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+
+.hero-rule-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: clamp(0.5rem, 1.4vw, 1.1rem) 0;
+}
+
+.hero-rule {
+  display: block;
+  width: clamp(4rem, 10vw, 11rem);
+  height: 1px;
+  transform-origin: left center;
+  background: #e9874d;
+}
+
+.hero-rule-dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #e9874d;
+}
+
+.hero-seal {
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  width: clamp(5.5rem, 9vw, 8.5rem);
+  height: clamp(5.5rem, 9vw, 8.5rem);
+  pointer-events: none;
+}
+
+.hero-seal-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-seal-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: hero-seal-spin 28s linear infinite;
+}
+
+@keyframes hero-seal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-seal-core {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-seal-core span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #e9874d;
+  box-shadow: 0 0 24px rgba(233, 135, 77, 0.8);
+}
+
+.hero-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  translate: -50% 0;
+  pointer-events: none;
+}
+
+.hero-cue-track {
+  display: block;
+  width: 1px;
+  height: 4rem;
+  overflow: hidden;
+  background: rgba(248, 246, 240, 0.18);
+}
+
+.hero-cue-dot {
+  display: block;
+  width: 1px;
+  height: 1rem;
+  margin-left: -0.5px;
+  background: #e9874d;
+  animation: hero-cue-fall 2.3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes hero-cue-fall {
+  0% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  22% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(64px);
+    opacity: 0;
+  }
+}
+
+.hero-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.hero-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 0;
+  background: #050c0b;
+  pointer-events: none;
+}
+
+.hero-bar-top {
+  top: 0;
+}
+
+.hero-bar-bottom {
+  bottom: 0;
+}
+
+.hero-curtain {
+  z-index: 55;
+  background: #26383b;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ---------- reduced-motion fallbacks ---------- */
+
+@media (prefers-reduced-motion: reduce) {
   .cinematic-hero {
     height: 100svh !important;
   }
+}
 
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
   .fleet-viewport {
     height: auto !important;
   }
