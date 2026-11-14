@@ -54,7 +54,7 @@ Drag-and-drop the `dist/` folder onto https://app.netlify.com/drop also works.
 Everything visible lives in **`index.html`**:
 
 - Phone / WhatsApp links: search for `918728878910` and replace.
-- Services, fleet, destinations, FAQ, footer text: plain HTML sections.
+- Services, vehicles, routes, packages, trust, FAQ, footer text: plain HTML sections.
 - Business facts (hours, city): also duplicated inside the JSON-LD block in `<head>`.
 - Colours/fonts: `src/website/style.css` (`--teal`, `--amber`, `--ink`, `--bone`).
 

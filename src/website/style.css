@@ -51,6 +51,7 @@ html {
   scroll-padding-top: calc(var(--header-h) + 2.4rem);
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 
 body {
@@ -63,6 +64,7 @@ body {
   line-height: 1.65;
   font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 body.nav-open {
@@ -1749,13 +1751,16 @@ button {
     height: 100dvh;
     padding: 5.5rem 2rem 2rem;
     background: var(--ink);
+    visibility: hidden;
     transform: translateX(102%);
-    transition: transform 0.5s var(--ease);
+    transition: transform 0.5s var(--ease), visibility 0s 0.5s;
     pointer-events: none;
   }
 
   .nav.is-open {
+    visibility: visible;
     transform: translateX(0);
+    transition: transform 0.5s var(--ease);
     pointer-events: auto;
   }
 
