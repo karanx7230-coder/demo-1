@@ -41,8 +41,8 @@ Drag-and-drop the `dist/` folder onto https://app.netlify.com/drop also works.
 2. Create a **Google Business Profile** for the business — this is the single biggest
    factor for local searches like "taxi in Mohali". Keep the name, phone and city
    identical everywhere (NAP consistency).
-3. Replace the **demo phone number** `+91 98765 43210` (copied from the current site)
-   with the client's real number if it is different.
+3. Phone / WhatsApp: **+91 87288 78910** (set across the page — double-check it is the
+   client's real number).
 4. Add a real street address and email if you want them published (there are none on
    the current site, so none are invented here).
 5. Get a few real Google reviews — never fake ones.
@@ -53,7 +53,7 @@ Drag-and-drop the `dist/` folder onto https://app.netlify.com/drop also works.
 
 Everything visible lives in **`index.html`**:
 
-- Phone / WhatsApp links: search for `919876543210` and replace.
+- Phone / WhatsApp links: search for `918728878910` and replace.
 - Services, fleet, destinations, FAQ, footer text: plain HTML sections.
 - Business facts (hours, city): also duplicated inside the JSON-LD block in `<head>`.
 - Colours/fonts: `src/website/style.css` (`--teal`, `--amber`, `--ink`, `--bone`).

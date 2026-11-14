@@ -13,11 +13,20 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const WHATSAPP = '918728878910';
 
 /* --------------------------------------------------------------------------
-   Header shadow
+   Header: shadow + hide on scroll down, reveal on scroll up
 -------------------------------------------------------------------------- */
 
+let lastY = 0;
+
 const onScroll = () => {
-  header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  const y = window.scrollY;
+  header?.classList.toggle('is-scrolled', y > 8);
+
+  if (header) {
+    if (y > 140 && y > lastY + 4) header.classList.add('is-hidden');
+    else if (y < lastY - 4 || y < 140) header.classList.remove('is-hidden');
+  }
+  lastY = y;
 };
 
 onScroll();
@@ -199,9 +208,37 @@ form?.addEventListener('submit', (event) => {
    Small niceties
 -------------------------------------------------------------------------- */
 
-document.querySelectorAll('[data-year]').forEach((el) => {
-  el.textContent = String(new Date().getFullYear());
-});
-
 const year = document.getElementById('year');
 if (year) year.textContent = String(new Date().getFullYear());
+
+/* --------------------------------------------------------------------------
+   Subtle parallax on hero and destination images
+-------------------------------------------------------------------------- */
+
+const parallaxEls = [...document.querySelectorAll('[data-parallax]')].map((el) => ({
+  el,
+  strength: Number(el.dataset.parallax) || 10,
+}));
+
+if (parallaxEls.length && !reducedMotion.matches) {
+  let parallaxRaf = 0;
+  const tickParallax = () => {
+    parallaxRaf = 0;
+    const vh = window.innerHeight;
+    for (const item of parallaxEls) {
+      const rect = item.el.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > vh) continue;
+      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+      const scale = item.el.classList.contains('hero__img') ? 1 : 1.12;
+      item.el.style.transform = `translateY(${(progress * item.strength).toFixed(2)}%) scale(${scale})`;
+    }
+  };
+
+  const requestParallax = () => {
+    if (!parallaxRaf) parallaxRaf = requestAnimationFrame(tickParallax);
+  };
+
+  tickParallax();
+  window.addEventListener('scroll', requestParallax, { passive: true });
+  window.addEventListener('resize', requestParallax);
+}
