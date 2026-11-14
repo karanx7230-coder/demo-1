@@ -51,7 +51,7 @@ export default function Hero() {
 
   return (
     <section id="top" ref={ref} className="cinematic-hero relative h-[100svh] bg-ink text-cream lg:h-[135svh]">
-      <div className="sticky top-0 h-[100svh] overflow-hidden">
+      <div className="sticky top-0 h-[150svh] overflow-hidden">
         <img
           src="/assets/hero/hero-landscape.webp"
           alt="A mountain highway at first light"
