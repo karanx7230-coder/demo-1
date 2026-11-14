@@ -1,0 +1,18 @@
+{
+  "name": "Karnail Tour and Travels",
+  "short_name": "Karnail Travels",
+  "description": "Cabs and tours from Mohali, Punjab. Airport transfers, outstation cabs and tour packages.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4EFE6",
+  "theme_color": "#315D5C",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

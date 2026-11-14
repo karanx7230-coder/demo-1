@@ -1,1 +1,1 @@
-/* /index.html 200
+# Single-page site. No SPA rewrite: unknown URLs should return a real 404.

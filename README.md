@@ -1,100 +1,75 @@
-# Karnail Tour and Travels
+# Karnail Tour and Travels — One-Page Website
 
-A cinematic, single-page website for a family-run cab and tour service in Mohali, Punjab. The design takes its cues from the `taxi_3d_360_viewer.html` reference: a dark showroom palette, layered depth, pointer-reactive 3D tilt, oversized serif type, illustrated vehicles and a warm marigold accent.
+A simple, fast, professional one-page website for Karnail Tour and Travels
+(cab & tour operator, Mohali, Punjab), built for good search-engine visibility.
+
+**No 3D, no frameworks on the page** — plain HTML + CSS + a small vanilla JS file.
+The old 3D "film" experiment still sits in `src/film/` but is **not loaded** by the
+site and is not part of the build.
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:5173
 ```
 
-Open the URL printed in the terminal, usually **http://localhost:5173**.
-
-Production build:
+## Build / deploy
 
 ```bash
-npm run build
-npm run preview
+npm run build      # outputs to dist/
+npm run preview    # serve dist/ locally
 ```
 
-> Windows PowerShell note: if `npm` is blocked by the execution policy, use `npm.cmd install` and `npm.cmd run dev`.
+Deploys to Netlify as-is (`netlify.toml` already points at `dist/`).
+Drag-and-drop the `dist/` folder onto https://app.netlify.com/drop also works.
 
-## Stack
+## SEO — what is already done
 
-- Vite 5 + React 18
-- Tailwind CSS 3 with custom colour, type and motion tokens
-- Lucide React icons
-- IntersectionObserver scroll reveals and rAF-throttled pointer effects
-- Plain CSS 3D transforms for tilt, parallax and the vehicle showroom
+- Semantic single-page HTML with one `h1`, real section headings, descriptive `alt` text.
+- Title, meta description, canonical URL, Open Graph + Twitter cards.
+- JSON-LD structured data: `TaxiService`/`LocalBusiness`, `WebSite`, `FAQPage`
+  (FAQ schema matches the visible FAQ text).
+- `robots.txt` + `sitemap.xml` with the real domain.
+- Custom 404 page, favicon, web manifest, preloaded hero image and fonts.
+- Very light page: ~6 KB gzipped CSS + ~2 KB JS, lazy images, no tracking, no external requests.
 
-## Project structure
+## SEO — what YOU must do to actually appear in Google
 
-```
-src/
-  App.jsx                    Page composition + scroll progress
-  assets/img/                Local photography (hero, destinations, peaks)
-  components/site/
-    Navbar.jsx               Floating glass navigation + mobile menu
-    Hero.jsx                 Parallax hero, mountain planes, ride ticket
-    Marquee.jsx              Service ticker
-    Intro.jsx                Story, stats and landscape card
-    Services.jsx             Six service cards
-    Fleet.jsx                Interactive vehicle showroom with tabs
-    VehicleArt.jsx           Branded SVG sedan / SUV / Innova / tempo art
-    Destinations.jsx         Draggable destination rail
-    RouteStory.jsx           Three-step booking story with drawn route
-    Promise.jsx              Trust cards
-    Reviews.jsx              Auto-scrolling review rail
-    Contact.jsx              WhatsApp / call conversion block
-    Footer.jsx               Sitemap, contact and large brand watermark
-    StickyBar.jsx            Mobile call / WhatsApp bar
-    primitives.jsx           Reveal, buttons, labels, seal and icons
-    spatial.jsx              Pointer tracking, Tilt and BrandMark
-  data/business.js           All site copy, contact details and fleet/destination data
-  index.css                  Fonts, base styles, reveal and 3D utilities
-public/                      Favicon, robots.txt, sitemap.xml, redirect
-```
+1. **Verify the site in Google Search Console** (https://search.google.com/search-console)
+   and submit `https://karnailtourandtravel.netlify.app/sitemap.xml`.
+2. Create a **Google Business Profile** for the business — this is the single biggest
+   factor for local searches like "taxi in Mohali". Keep the name, phone and city
+   identical everywhere (NAP consistency).
+3. Replace the **demo phone number** `+91 98765 43210` (copied from the current site)
+   with the client's real number if it is different.
+4. Add a real street address and email if you want them published (there are none on
+   the current site, so none are invented here).
+5. Get a few real Google reviews — never fake ones.
+6. If you later get a custom domain, update the domain in:
+   `index.html` (canonical + OG + JSON-LD), `public/robots.txt`, `public/sitemap.xml`.
 
 ## Editing content
 
-- **Business details and phone/WhatsApp** — `src/data/business.js`. Update the demo number before launch.
-- **Services, fleet, destinations, promises, reviews and booking steps** — also `src/data/business.js`.
-- **Page metadata and structured data** — `index.html`.
-- **Colours and type scale** — `tailwind.config.js`.
-- **Fonts and custom utilities** — `src/index.css`.
-- **Photography** — `src/assets/img/`. Keep the hero at roughly 1600 × 1000 and destination cards portrait (3:4).
+Everything visible lives in **`index.html`**:
 
-## Interactive details
+- Phone / WhatsApp links: search for `919876543210` and replace.
+- Services, fleet, destinations, FAQ, footer text: plain HTML sections.
+- Business facts (hours, city): also duplicated inside the JSON-LD block in `<head>`.
+- Colours/fonts: `src/website/style.css` (`--teal`, `--amber`, `--ink`, `--bone`).
 
-- Pointer-driven parallax in the hero and destination cards.
-- 3D tilt with a moving specular highlight on service, fleet, destination and review cards.
-- Vehicle tabs swap the illustrated car, specs and WhatsApp booking message.
-- Scroll-drawn route line in the booking story.
-- Auto-scrolling service ticker and review rail, both paused on hover.
-- Mobile menu with staggered links and a sticky call / WhatsApp bar.
+## Project layout
 
-All pointer effects are disabled for touch devices and `prefers-reduced-motion`.
+```
+index.html              the whole site
+src/website/style.css   styles
+src/website/main.js     menu, scroll-spy, reveal, WhatsApp booking form
+src/assets/fonts/       local fonts (Anton, Manrope) — also in public/fonts
+public/                 robots.txt, sitemap.xml, 404.html, favicon, images, manifest
+src/film/               archived 3D experiment — NOT used by the site
+```
 
-## SEO and accessibility
+## Notes
 
-- Descriptive title, meta description, Open Graph, Twitter card and `TravelAgency` JSON-LD in `index.html`.
-- `public/robots.txt` and `public/sitemap.xml` point at the demo domain; replace it with the live domain before launch.
-- Lighthouse: 100 accessibility, 100 best practices, 100 SEO.
-
-## Deploying
-
-### Netlify
-
-1. Push the repository to GitHub and import it into Netlify.
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-4. `netlify.toml` and `public/_redirects` are already configured.
-
-### Vercel
-
-1. Import the repository at vercel.com.
-2. Framework preset: **Vite**.
-3. Build command: `npm run build`; output directory: `dist`.
-
-Replace the demo phone number, domain and social copy before going live.
+- The booking form does not store anything; it opens WhatsApp with a pre-filled message.
+- Testimonials are intentionally omitted — the current site has no verified reviews.

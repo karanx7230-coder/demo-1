@@ -363,6 +363,14 @@ button {
   color: var(--muted);
 }
 
+.brand--footer .brand__name {
+  color: var(--bone);
+}
+
+.brand--footer .brand__name span {
+  color: rgba(244, 239, 230, 0.55);
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -427,6 +435,8 @@ button {
 
 .nav-toggle {
   display: none;
+  position: relative;
+  z-index: 120;
   width: 2.5rem;
   height: 2.5rem;
   place-items: center;
@@ -453,6 +463,10 @@ button {
 
 .nav-toggle[aria-expanded='true'] span:nth-child(3) {
   transform: translateY(-0.42rem) rotate(-45deg);
+}
+
+.nav-toggle[aria-expanded='true'] span {
+  background: var(--bone);
 }
 
 .nav-backdrop {
@@ -1623,6 +1637,19 @@ button {
 
   .nav a::after {
     display: none;
+  }
+
+  .nav a,
+  .nav a.is-current {
+    color: var(--bone);
+  }
+
+  .nav a:hover {
+    color: var(--amber);
+  }
+
+  .nav a.is-current {
+    color: var(--amber);
   }
 
   .nav-toggle {
