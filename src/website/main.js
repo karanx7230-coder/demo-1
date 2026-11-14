@@ -162,46 +162,51 @@ if (revealItems.length && !reducedMotion.matches && 'IntersectionObserver' in wi
    Booking form â†’ WhatsApp (nothing is stored)
 -------------------------------------------------------------------------- */
 
-const form = document.getElementById('booking-form');
-const formStatus = document.querySelector('[data-form-status]');
+const forms = [...document.querySelectorAll('#booking-form, #enquiry-form')];
 
-form?.addEventListener('submit', (event) => {
-  event.preventDefault();
+forms.forEach((form) => {
+  const status = form.querySelector('[data-form-status]');
 
-  if (!form.reportValidity()) return;
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  const data = new FormData(form);
-  const value = (key) => String(data.get(key) || '').trim();
+    if (!form.reportValidity()) return;
 
-  const name = value('name');
-  const phone = value('phone');
-  const from = value('from');
-  const to = value('to');
-  const date = value('date');
-  const service = value('service');
-  const notes = value('message');
+    const data = new FormData(form);
+    const value = (key) => String(data.get(key) || '').trim();
 
-  const message = [
-    'Hi Karnail Tour and Travels, I want to book a ride.',
-    `Name: ${name}`,
-    `Phone: ${phone}`,
-    `Pickup: ${from}`,
-    `Drop: ${to}`,
-    date ? `Date: ${date}` : '',
-    service ? `Service: ${service}` : '',
-    notes ? `Notes: ${notes}` : '',
-  ]
-    .filter(Boolean)
-    .join('\n');
+    const name = value('name');
+    const phone = value('phone');
+    const from = value('from');
+    const to = value('to');
+    const date = value('date');
+    const passengers = value('passengers');
+    const service = value('service');
+    const notes = value('message');
 
-  const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+    const message = [
+      'Hi Karnail Tour and Travels, I want to book a ride.',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Pickup: ${from}`,
+      `Drop: ${to}`,
+      date ? `Date: ${date}` : '',
+      passengers ? `Passengers: ${passengers}` : '',
+      service ? `Service: ${service}` : '',
+      notes ? `Notes: ${notes}` : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
 
-  if (formStatus) {
-    formStatus.textContent = 'Opening WhatsApp with your details…';
-    formStatus.classList.add('is-visible');
-  }
+    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
 
-  window.open(url, '_blank', 'noopener');
+    if (status) {
+      status.textContent = 'Opening WhatsApp with your details…';
+      status.classList.add('is-visible');
+    }
+
+    window.open(url, '_blank', 'noopener');
+  });
 });
 
 /* --------------------------------------------------------------------------
@@ -210,35 +215,3 @@ form?.addEventListener('submit', (event) => {
 
 const year = document.getElementById('year');
 if (year) year.textContent = String(new Date().getFullYear());
-
-/* --------------------------------------------------------------------------
-   Subtle parallax on hero and destination images
--------------------------------------------------------------------------- */
-
-const parallaxEls = [...document.querySelectorAll('[data-parallax]')].map((el) => ({
-  el,
-  strength: Number(el.dataset.parallax) || 10,
-}));
-
-if (parallaxEls.length && !reducedMotion.matches) {
-  let parallaxRaf = 0;
-  const tickParallax = () => {
-    parallaxRaf = 0;
-    const vh = window.innerHeight;
-    for (const item of parallaxEls) {
-      const rect = item.el.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > vh) continue;
-      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-      const scale = item.el.classList.contains('hero__img') ? 1 : 1.12;
-      item.el.style.transform = `translateY(${(progress * item.strength).toFixed(2)}%) scale(${scale})`;
-    }
-  };
-
-  const requestParallax = () => {
-    if (!parallaxRaf) parallaxRaf = requestAnimationFrame(tickParallax);
-  };
-
-  tickParallax();
-  window.addEventListener('scroll', requestParallax, { passive: true });
-  window.addEventListener('resize', requestParallax);
-}
