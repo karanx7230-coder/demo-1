@@ -2,62 +2,1036 @@
 <html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#315D5C" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>Karnail Tour and Travels — Cabs &amp; Tours in Mohali, Punjab</title>
     <meta
       name="description"
-      content="Karnail Tour and Travels — safe, comfortable cabs and curated tours from Mohali. Airport transfers, outstation cabs, corporate travel, weddings and tour packages. Travel Safe. Travel Happy."
+      content="Book a cab or tour from Mohali with Karnail Tour and Travels. Airport transfers, outstation cabs, Himachal and Kashmir tours, wedding transport. Open 24/7 on WhatsApp."
     />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="author" content="Karnail Tour and Travels" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href="https://www.karnailtourandtravels.demo/" />
-    <title>Karnail Tour and Travels | Cabs & Tours in Mohali</title>
+    <meta name="theme-color" content="#315D5C" />
+    <link rel="canonical" href="https://karnailtourandtravel.netlify.app/" />
 
+    <!-- Open Graph / social -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Karnail Tour and Travels" />
-    <meta property="og:url" content="https://www.karnailtourandtravels.demo/" />
-    <meta property="og:title" content="Karnail Tour and Travels | Travel Safe. Travel Happy." />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content="https://karnailtourandtravel.netlify.app/" />
+    <meta property="og:title" content="Karnail Tour and Travels — Cabs &amp; Tours in Mohali" />
     <meta
       property="og:description"
-      content="Cabs, outstation drives and handpicked tours from Mohali. One message on WhatsApp and the road is handled."
+      content="Airport transfers, outstation cabs, wedding transport and tour packages from Mohali, Punjab. Travel Safe. Travel Happy. Open 24/7."
     />
-    <meta
-      property="og:image"
-      content="https://www.karnailtourandtravels.demo/og-cover.webp"
-    />
-    <meta property="og:image:alt" content="Himalayan landscape at first light" />
+    <meta property="og:image" content="https://karnailtourandtravel.netlify.app/assets/hero/hero-landscape.webp" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content="Open highway through the hills at sunrise" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Karnail Tour and Travels — Cabs &amp; Tours in Mohali" />
     <meta
-      name="twitter:image"
-      content="https://www.karnailtourandtravels.demo/og-cover.webp"
+      name="twitter:description"
+      content="Airport transfers, outstation cabs and tour packages from Mohali, Punjab. Open 24/7."
     />
+    <meta name="twitter:image" content="https://karnailtourandtravel.netlify.app/assets/hero/hero-landscape.webp" />
 
+    <!-- Icons and performance -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" as="image" href="/assets/hero/hero-landscape.webp" fetchpriority="high" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/anton.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope.woff2" crossorigin />
+
+    <script>
+      // Enables the reveal animations only when JavaScript is available.
+      document.documentElement.classList.add('js');
+    </script>
+
+    <!-- Structured data: local business + website + FAQ. Keep facts identical to the page. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "TravelAgency",
-        "name": "Karnail Tour and Travels",
-        "slogan": "Travel Safe. Travel Happy.",
-        "description": "Safe, comfortable and reliable cab and tour service based in Mohali, Punjab.",
-        "telephone": "+91-98765-43210",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Mohali",
-          "addressRegion": "Punjab",
-          "addressCountry": "IN"
-        },
-        "areaServed": ["Mohali", "Chandigarh", "Panchkula", "Punjab", "Himachal Pradesh"],
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "00:00",
-          "closes": "23:59"
-        }
+        "@graph": [
+          {
+            "@type": ["TaxiService", "LocalBusiness"],
+            "@id": "https://karnailtourandtravel.netlify.app/#business",
+            "name": "Karnail Tour and Travels",
+            "slogan": "Travel Safe. Travel Happy.",
+            "description": "Cab and tour operator based in Mohali, Punjab. Airport transfers, outstation cabs, corporate travel, wedding transport, tour packages and local sightseeing across Punjab, Himachal Pradesh and Kashmir.",
+            "url": "https://karnailtourandtravel.netlify.app/",
+            "telephone": "+91-98765-43210",
+            "image": "https://karnailtourandtravel.netlify.app/assets/hero/hero-landscape.webp",
+            "logo": "https://karnailtourandtravel.netlify.app/assets/branding/logo-mark.webp",
+            "priceRange": "Fares on request",
+            "currenciesAccepted": "INR",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Mohali",
+              "addressRegion": "Punjab",
+              "addressCountry": "IN"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Mohali" },
+              { "@type": "City", "name": "Chandigarh" },
+              { "@type": "City", "name": "Panchkula" },
+              { "@type": "AdministrativeArea", "name": "Punjab" },
+              { "@type": "AdministrativeArea", "name": "Himachal Pradesh" },
+              { "@type": "AdministrativeArea", "name": "Jammu and Kashmir" }
+            ],
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Travel services",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Airport Transfers" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Outstation Cabs" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Travel" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding Transport" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tour Packages" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local Sightseeing" } }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://karnailtourandtravel.netlify.app/#website",
+            "url": "https://karnailtourandtravel.netlify.app/",
+            "name": "Karnail Tour and Travels",
+            "inLanguage": "en-IN",
+            "publisher": { "@id": "https://karnailtourandtravel.netlify.app/#business" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://karnailtourandtravel.netlify.app/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Where is Karnail Tour and Travels based?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Karnail Tour and Travels is based in Mohali, Punjab. We serve Mohali, Chandigarh, Panchkula and the wider region, including outstation trips across Punjab, Himachal Pradesh and Kashmir."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you provide airport transfers?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We provide pickup and drop services to Chandigarh airport (IXC) and other airports on request, including early-morning and late-night flights."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I book an outstation cab to Himachal or Kashmir?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Outstation cabs and multi-day tour packages are available for Himachal Pradesh, Kashmir, Spiti, Ladakh and other destinations. Share your route and dates on WhatsApp for availability and a quote."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I book a cab?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Send a WhatsApp message or call +91 98765 43210 with your pickup point, drop point, date and number of passengers. We confirm the car, driver and fare before your trip."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are you available 24/7?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Karnail Tour and Travels takes bookings 24 hours a day, 7 days a week, including early flights and late arrivals."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you provide cars for weddings and corporate travel?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We arrange wedding transport, coordinated convoys, corporate travel and monthly billing for businesses. Tell us the date and number of cars on WhatsApp."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
+
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="header" id="top">
+      <div class="container header__inner">
+        <a class="brand" href="#top" aria-label="Karnail Tour and Travels — home">
+          <img
+            class="brand__mark"
+            src="/assets/branding/logo-mark.webp"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <span class="brand__name">
+            Karnail
+            <span>Tour &amp; Travels</span>
+          </span>
+        </a>
+
+        <nav class="nav" id="primary-nav" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#fleet">Fleet</a>
+          <a href="#destinations">Destinations</a>
+          <a href="#why">Why us</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header__actions">
+          <a class="header__phone" href="tel:+919876543210">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><use href="#i-phone" /></svg>
+            <span>+91 98765 43210</span>
+          </a>
+          <a
+            class="btn btn--amber btn--sm"
+            href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20cab."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book on WhatsApp
+          </a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            aria-label="Open menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero__img"
+          src="/assets/hero/hero-landscape.webp"
+          alt="Open highway through the Himalayan foothills at first light"
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="hero__scrim" aria-hidden="true"></div>
+
+        <div class="container hero__inner">
+          <p class="eyebrow eyebrow--light">
+            <span class="dot" aria-hidden="true"></span>
+            Karnail Tour and Travels · Mohali, Punjab
+          </p>
+
+          <h1 class="hero__title" id="hero-title">
+            Travel safe.<br />
+            <span>Travel happy.</span>
+          </h1>
+
+          <p class="hero__lede">
+            Cabs, outstation drives and handpicked tours from Mohali. Airport transfers,
+            hill roads and long weekends — with a driver who knows the way. One message on
+            WhatsApp and the road is handled.
+          </p>
+
+          <div class="hero__actions">
+            <a
+              class="btn btn--amber"
+              href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20cab."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><use href="#i-whatsapp" /></svg>
+              Book on WhatsApp
+            </a>
+            <a class="btn btn--ghost" href="tel:+919876543210">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><use href="#i-phone" /></svg>
+              Call +91 98765 43210
+            </a>
+          </div>
+
+          <ul class="hero__points">
+            <li>Open 24/7</li>
+            <li>Local drivers</li>
+            <li>Clear fares</li>
+            <li>Mohali based</li>
+          </ul>
+        </div>
+
+        <div class="container hero__strip">
+          <div><strong>24/7</strong><span>Bookings &amp; support</span></div>
+          <div><strong>06</strong><span>Travel services</span></div>
+          <div><strong>04</strong><span>Vehicle classes</span></div>
+          <div><strong>1</strong><span>Local team</span></div>
+        </div>
+      </section>
+
+      <!-- Intro -->
+      <section class="section intro" aria-labelledby="intro-title">
+        <div class="container intro__grid">
+          <div data-reveal>
+            <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Who we are</p>
+            <h2 class="display" id="intro-title">One call.<br />The whole road handled.</h2>
+          </div>
+
+          <div class="intro__body" data-reveal>
+            <p class="lead">
+              Karnail Tour and Travels is a local cab and tour operator based in Mohali,
+              Punjab. From a 4am airport run to a week in the mountains, we keep the car,
+              the driver and the timing sorted — so you can just travel.
+            </p>
+            <p>
+              We cover airport transfers, outstation cabs, corporate travel, wedding
+              transport, tour packages and local sightseeing across Mohali, Chandigarh,
+              Panchkula, Punjab, Himachal Pradesh and Kashmir. The phone is answered around
+              the clock, and every fare is agreed before the wheels move.
+            </p>
+            <p class="intro__areas">
+              <strong>Areas we serve:</strong> Mohali · Chandigarh · Panchkula · Zirakpur ·
+              Kharar · Punjab · Himachal Pradesh · Kashmir
+            </p>
+            <a class="link-arrow" href="#contact">Plan your trip <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="section section--paper" id="services" aria-labelledby="services-title">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Our services</p>
+              <h2 class="display" id="services-title">Six ways<br />to go.</h2>
+            </div>
+            <p class="section-head__text">
+              Airport run, office commute, wedding convoy or a week in the hills — pick the
+              journey and we will match the car.
+            </p>
+          </header>
+
+          <div class="service-grid">
+            <article class="service-card" data-reveal>
+              <span class="service-card__num">01</span>
+              <svg class="service-card__icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-plane" /></svg>
+              <h3>Airport Transfers</h3>
+              <p>On-time pickups and drop-offs to Chandigarh airport and beyond.</p>
+              <p class="service-card__meta">IXC · Chandigarh</p>
+              <a
+                class="service-card__link"
+                href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20enquire%20about%20airport%20transfers."
+                target="_blank"
+                rel="noopener noreferrer"
+              >Enquire <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <span class="service-card__num">02</span>
+              <svg class="service-card__icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-road" /></svg>
+              <h3>Outstation Cabs</h3>
+              <p>Comfortable long drives with experienced hill drivers.</p>
+              <p class="service-card__meta">Hill drivers</p>
+              <a
+                class="service-card__link"
+                href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20enquire%20about%20outstation%20cabs."
+                target="_blank"
+                rel="noopener noreferrer"
+              >Enquire <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <span class="service-card__num">03</span>
+              <svg class="service-card__icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-briefcase" /></svg>
+              <h3>Corporate Travel</h3>
+              <p>Monthly billing, verified drivers and cars that show up on time.</p>
+              <p class="service-card__meta">Monthly billing</p>
+              <a
+                class="service-card__link"
+                href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20enquire%20about%20corporate%20travel."
+                target="_blank"
+                rel="noopener noreferrer"
+              >Enquire <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <span class="service-card__num">04</span>
+              <svg class="service-card__icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-rings" /></svg>
+              <h3>Wedding Transport</h3>
+              <p>Decorated cars and coordinated arrivals for the whole family.</p>
+              <p class="service-card__meta">Convoy</p>
+              <a
+                class="service-card__link"
+                href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20enquire%20about%20wedding%20transport."
+                target="_blank"
+                rel="noopener noreferrer"
+              >Enquire <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <span class="service-card__num">05</span>
+              <svg class="service-card__icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-map" /></svg>
+              <h3>Tour Packages</h3>
+              <p>Curated itineraries for Himachal, Punjab and beyond.</p>
+              <p class="service-card__meta">Custom itineraries</p>
+              <a
+                class="service-card__link"
+                href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20enquire%20about%20tour%20packages."
+                target="_blank"
+                rel="noopener noreferrer"
+              >Enquire <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <span class="service-card__num">06</span>
+              <svg class="service-card__icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-camera" /></svg>
+              <h3>Local Sightseeing</h3>
+              <p>Mohali, Chandigarh and Panchkula at your pace, with a local at the wheel.</p>
+              <p class="service-card__meta">City · At your pace</p>
+              <a
+                class="service-card__link"
+                href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20enquire%20about%20local%20sightseeing."
+                target="_blank"
+                rel="noopener noreferrer"
+              >Enquire <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fleet -->
+      <section class="section section--ink" id="fleet" aria-labelledby="fleet-title">
+        <div class="container">
+          <header class="section-head section-head--light" data-reveal>
+            <div>
+              <p class="eyebrow eyebrow--light"><span class="dot" aria-hidden="true"></span> The fleet</p>
+              <h2 class="display" id="fleet-title">The right car<br />for the road.</h2>
+            </div>
+            <p class="section-head__text">
+              Sedans for airport runs, SUVs for hill roads, Tempo Travellers and coaches for
+              groups. Tell us the date and we will confirm the exact car available.
+            </p>
+          </header>
+
+          <div class="fleet-grid">
+            <article class="fleet-card" data-reveal>
+              <div class="fleet-card__media">
+                <img
+                  src="/assets/vehicles/sedan-cutout.webp"
+                  alt="Sedan cab for airport transfers and city travel in Mohali"
+                  width="736"
+                  height="388"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="fleet-card__body">
+                <h3>Sedan</h3>
+                <p class="fleet-card__spec">Capacity on request · AC</p>
+                <p>Airport runs, city days and short outstation trips.</p>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20sedan."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="fleet-card__link"
+                >Check availability <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="fleet-card" data-reveal>
+              <div class="fleet-card__media">
+                <img
+                  src="/assets/vehicles/suv-cutout.webp"
+                  alt="SUV cab for family trips and hill roads from Mohali"
+                  width="727"
+                  height="419"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="fleet-card__body">
+                <h3>SUV</h3>
+                <p class="fleet-card__spec">Capacity on request · AC</p>
+                <p>More room for families, luggage and hill roads.</p>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20an%20SUV."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="fleet-card__link"
+                >Check availability <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="fleet-card" data-reveal>
+              <div class="fleet-card__media">
+                <img
+                  src="/assets/vehicles/tempo-traveller-cutout.webp"
+                  alt="Tempo Traveller for group tours and wedding parties"
+                  width="460"
+                  height="312"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="fleet-card__body">
+                <h3>Tempo Traveller</h3>
+                <p class="fleet-card__spec">Capacity on request · AC</p>
+                <p>Group tours, wedding parties and long itineraries.</p>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20Tempo%20Traveller."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="fleet-card__link"
+                >Check availability <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="fleet-card" data-reveal>
+              <div class="fleet-card__media">
+                <img
+                  src="/assets/vehicles/bus-cutout.webp"
+                  alt="Luxury coach for large groups and corporate offsites"
+                  width="610"
+                  height="343"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="fleet-card__body">
+                <h3>Luxury Coach</h3>
+                <p class="fleet-card__spec">Capacity on request · AC</p>
+                <p>Large groups, corporate offsites and events.</p>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20luxury%20coach."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="fleet-card__link"
+                >Check availability <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          </div>
+
+          <p class="fleet-note" data-reveal>
+            Vehicle classes are representative. Confirm the exact car, seating and luggage
+            space for your dates on WhatsApp.
+          </p>
+        </div>
+      </section>
+
+      <!-- Destinations -->
+      <section class="section" id="destinations" aria-labelledby="destinations-title">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Destinations</p>
+              <h2 class="display" id="destinations-title">Where the<br />road opens.</h2>
+            </div>
+            <p class="section-head__text">
+              Short escapes and long mountain drives from Mohali. Tell us how many days you
+              have and we will suggest the route, the stops and the car.
+            </p>
+          </header>
+
+          <div class="dest-grid">
+            <article class="dest-card dest-card--wide" data-reveal>
+              <img
+                src="/assets/destinations/kashmir-01.webp"
+                alt="Houseboats on Dal Lake in Kashmir, a tour destination from Mohali"
+                width="1200"
+                height="1607"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="dest-card__overlay" aria-hidden="true"></div>
+              <div class="dest-card__body">
+                <p class="dest-card__tag">Kashmir</p>
+                <h3>Dal Lake mornings</h3>
+                <p>Shikara rides, houseboats and chinar trees — a slow, scenic escape.</p>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20plan%20a%20trip%20to%20Kashmir."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Plan Kashmir <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="dest-card" data-reveal>
+              <img
+                src="/assets/destinations/himachal-01.webp"
+                alt="Pine valley in Himachal Pradesh with mountain roads"
+                width="624"
+                height="928"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="dest-card__overlay" aria-hidden="true"></div>
+              <div class="dest-card__body">
+                <p class="dest-card__tag">Himachal</p>
+                <h3>Pine and river air</h3>
+                <p>Manali, Kullu and the first snow of the season.</p>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20plan%20a%20trip%20to%20Himachal."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Plan Himachal <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="dest-card" data-reveal>
+              <img
+                src="/assets/destinations/mountains-01.webp"
+                alt="High mountain pass in Spiti with an open road"
+                width="736"
+                height="1308"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="dest-card__overlay" aria-hidden="true"></div>
+              <div class="dest-card__body">
+                <p class="dest-card__tag">Spiti</p>
+                <h3>High and quiet</h3>
+                <p>Cold desert, old monasteries and roads that keep opening up.</p>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20plan%20a%20trip%20to%20Spiti."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Plan Spiti <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="dest-card dest-card--wide" data-reveal>
+              <img
+                src="/assets/destinations/mountains-02.webp"
+                alt="Wide Ladakh landscape with mountains and open road"
+                width="736"
+                height="981"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="dest-card__overlay" aria-hidden="true"></div>
+              <div class="dest-card__body">
+                <p class="dest-card__tag">Ladakh</p>
+                <h3>The long way up</h3>
+                <p>Thin air, wide skies and the road trip people talk about for years.</p>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20plan%20a%20trip%20to%20Ladakh."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Plan Ladakh <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          </div>
+
+          <div class="dest-cta" data-reveal>
+            <p>Somewhere else in mind? We plan custom routes too.</p>
+            <a
+              class="btn btn--outline"
+              href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20plan%20a%20custom%20trip."
+              target="_blank"
+              rel="noopener noreferrer"
+            >Ask for an itinerary <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why us -->
+      <section class="section" id="why" aria-labelledby="why-title">
+        <div class="container why">
+          <div class="why__media" data-reveal>
+            <img
+              src="/assets/destinations/mountains-02.webp"
+              alt="Mountain road in the Himalayas seen from above"
+              width="736"
+              height="981"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="why__badge">
+              <strong>24/7</strong>
+              <span>Phone answered,<br />day or night</span>
+            </div>
+          </div>
+
+          <div class="why__body" data-reveal>
+            <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Why travellers call us</p>
+            <h2 class="display" id="why-title">The road,<br />handled.</h2>
+            <p class="lead">
+              No chasing, no surprises and no waiting at the curb. Just a confirmed car and
+              a clear plan.
+            </p>
+
+            <ul class="why__list">
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>Local drivers</h3>
+                  <p>Drivers who know the hill roads, the airport runs and the shortcuts.</p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>On-time pickup</h3>
+                  <p>Early flights and late arrivals — we plan the day around your time.</p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Clear fares</h3>
+                  <p>The car, the driver and the fare are agreed before you travel.</p>
+                </div>
+              </li>
+              <li>
+                <span>04</span>
+                <div>
+                  <h3>Always reachable</h3>
+                  <p>A phone answered around the clock, every day of the week.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section section--paper" id="faq" aria-labelledby="faq-title">
+        <div class="container faq">
+          <div class="faq__head" data-reveal>
+            <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Good to know</p>
+            <h2 class="display" id="faq-title">Questions,<br />answered.</h2>
+            <p>
+              Still unsure? Send a WhatsApp message — we usually reply within minutes.
+            </p>
+            <a
+              class="link-arrow"
+              href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20have%20a%20question."
+              target="_blank"
+              rel="noopener noreferrer"
+            >Ask on WhatsApp <span aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="faq__list" data-reveal>
+            <details>
+              <summary>Where is Karnail Tour and Travels based?</summary>
+              <p>
+                We are based in Mohali, Punjab, and serve Mohali, Chandigarh, Panchkula,
+                Zirakpur, Kharar and the wider region — including outstation trips across
+                Punjab, Himachal Pradesh and Kashmir.
+              </p>
+            </details>
+            <details>
+              <summary>Do you provide airport transfers?</summary>
+              <p>
+                Yes. We handle pickup and drop services to Chandigarh airport (IXC) and
+                other airports on request, including early-morning and late-night flights.
+              </p>
+            </details>
+            <details>
+              <summary>Can I book an outstation cab to Himachal or Kashmir?</summary>
+              <p>
+                Yes. Outstation cabs and multi-day tour packages are available for
+                Himachal Pradesh, Kashmir, Spiti, Ladakh and other destinations. Share your
+                route and dates on WhatsApp for availability and a quote.
+              </p>
+            </details>
+            <details>
+              <summary>How do I book a cab?</summary>
+              <p>
+                Send a WhatsApp message or call
+                <a href="tel:+919876543210">+91 98765 43210</a> with your pickup point, drop
+                point, date and number of passengers. We confirm the car, driver and fare
+                before your trip.
+              </p>
+            </details>
+            <details>
+              <summary>Are you available 24/7?</summary>
+              <p>
+                Yes. We take bookings 24 hours a day, 7 days a week — early flights, late
+                arrivals and last-minute plans included.
+              </p>
+            </details>
+            <details>
+              <summary>Do you provide cars for weddings and corporate travel?</summary>
+              <p>
+                Yes. We arrange wedding transport, coordinated convoys, corporate travel and
+                monthly billing for businesses. Tell us the date and the number of cars on
+                WhatsApp.
+              </p>
+            </details>
+            <details>
+              <summary>How much does a cab cost?</summary>
+              <p>
+                Fares depend on the route, the car and the dates. Send us your trip details
+                on WhatsApp and we will share a clear quote before you book — no hidden
+                charges.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact / booking -->
+      <section class="section section--teal contact" id="contact" aria-labelledby="contact-title">
+        <div class="container contact__grid">
+          <div class="contact__intro" data-reveal>
+            <p class="eyebrow eyebrow--light"><span class="dot" aria-hidden="true"></span> Golden hour</p>
+            <h2 class="display" id="contact-title">Where are<br />we going?</h2>
+            <p class="lead">
+              Tell us the pickup, the drop and the date. We reply on WhatsApp with the car,
+              the driver and a clear fare.
+            </p>
+
+            <ul class="contact__rows">
+              <li>
+                <span class="contact__icon"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone" /></svg></span>
+                <div>
+                  <span>Phone / WhatsApp</span>
+                  <a href="tel:+919876543210">+91 98765 43210</a>
+                </div>
+              </li>
+              <li>
+                <span class="contact__icon"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-clock" /></svg></span>
+                <div>
+                  <span>Hours</span>
+                  <strong>Open 24 / 7</strong>
+                </div>
+              </li>
+              <li>
+                <span class="contact__icon"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pin" /></svg></span>
+                <div>
+                  <span>Based in</span>
+                  <strong>Mohali, Punjab</strong>
+                </div>
+              </li>
+            </ul>
+
+            <div class="contact__actions">
+              <a
+                class="btn btn--amber"
+                href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20cab."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><use href="#i-whatsapp" /></svg>
+                WhatsApp us
+              </a>
+              <a class="btn btn--ghost" href="tel:+919876543210">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><use href="#i-phone" /></svg>
+                Call now
+              </a>
+            </div>
+          </div>
+
+          <div class="form-card" data-reveal>
+            <h3>Plan your ride</h3>
+            <p class="form-card__sub">Fill this in and we will open WhatsApp with your details ready to send.</p>
+
+            <form id="booking-form" novalidate>
+              <div class="field-row">
+                <label class="field">
+                  <span>Name</span>
+                  <input type="text" name="name" autocomplete="name" placeholder="Your name" required />
+                </label>
+                <label class="field">
+                  <span>Phone</span>
+                  <input type="tel" name="phone" autocomplete="tel" placeholder="+91" required />
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label class="field">
+                  <span>Pickup</span>
+                  <input type="text" name="from" placeholder="Mohali, Chandigarh…" required />
+                </label>
+                <label class="field">
+                  <span>Drop</span>
+                  <input type="text" name="to" placeholder="Manali, Kashmir…" required />
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label class="field">
+                  <span>Date</span>
+                  <input type="date" name="date" />
+                </label>
+                <label class="field">
+                  <span>Service</span>
+                  <select name="service">
+                    <option value="">Choose</option>
+                    <option>Airport Transfers</option>
+                    <option>Outstation Cabs</option>
+                    <option>Corporate Travel</option>
+                    <option>Wedding Transport</option>
+                    <option>Tour Packages</option>
+                    <option>Local Sightseeing</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Anything else?</span>
+                <textarea name="message" rows="2" placeholder="Passengers, luggage, flight number, stops…"></textarea>
+              </label>
+
+              <button class="btn btn--amber form-card__submit" type="submit">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><use href="#i-whatsapp" /></svg>
+                Send on WhatsApp
+              </button>
+              <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+              <p class="form-note">
+                This opens WhatsApp with your message. Nothing is stored on this website.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__ghost" aria-hidden="true">Karnail</p>
+
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a class="brand brand--footer" href="#top" aria-label="Karnail Tour and Travels — back to top">
+              <img src="/assets/branding/logo-mark.webp" alt="" width="40" height="40" loading="lazy" />
+              <span class="brand__name">Karnail<span>Tour &amp; Travels</span></span>
+            </a>
+            <p>
+              Safe, comfortable cabs and curated tours from Mohali. Airport runs, hill
+              roads, weddings and long weekends — with a driver who knows the way.
+            </p>
+            <p class="footer__note"><strong>Travel Safe. Travel Happy.</strong></p>
+          </div>
+
+          <nav class="footer__col" aria-label="Footer">
+            <h2>Explore</h2>
+            <ul>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#fleet">Fleet</a></li>
+              <li><a href="#destinations">Destinations</a></li>
+              <li><a href="#why">Why us</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="footer__col">
+            <h2>Services</h2>
+            <ul>
+              <li><a href="#services">Airport Transfers</a></li>
+              <li><a href="#services">Outstation Cabs</a></li>
+              <li><a href="#services">Corporate Travel</a></li>
+              <li><a href="#services">Wedding Transport</a></li>
+              <li><a href="#services">Tour Packages</a></li>
+              <li><a href="#services">Local Sightseeing</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col footer__col--contact">
+            <h2>Reach us</h2>
+            <ul>
+              <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+              <li>
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20cab."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >WhatsApp</a>
+              </li>
+              <li>Mohali, Punjab</li>
+              <li>Open 24 / 7</li>
+            </ul>
+            <a
+              class="btn btn--amber btn--sm"
+              href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20cab."
+              target="_blank"
+              rel="noopener noreferrer"
+            >Book a cab</a>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© <span id="year">2026</span> Karnail Tour and Travels. All rights reserved.</p>
+          <p>Mohali · Chandigarh · Panchkula · Punjab · Himachal Pradesh · Kashmir</p>
+          <a href="#top" class="footer__top">Back to top <span aria-hidden="true">↑</span></a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="sticky-cta" aria-label="Quick contact">
+      <a
+        href="https://wa.me/919876543210?text=Hi%20Karnail%20Tour%20and%20Travels%2C%20I%20want%20to%20book%20a%20cab."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><use href="#i-whatsapp" /></svg>
+        WhatsApp
+      </a>
+      <a href="tel:+919876543210">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><use href="#i-phone" /></svg>
+        Call
+      </a>
+    </div>
+
+    <!-- Inline icon sprite: keeps the page dependency-free. -->
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path d="M6.6 3.5 9 3l1.8 4.2-1.9 1.7a12.6 12.6 0 0 0 6.2 6.2l1.7-1.9L21 15l-.5 2.4a2.2 2.2 0 0 1-2.4 1.7A16.2 16.2 0 0 1 4.9 5.9 2.2 2.2 0 0 1 6.6 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24">
+        <path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.5L3.5 20.5l1.4-4.5a8.4 8.4 0 1 1 15.6-4.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M9 8.2c.3-.1.7 0 .9.4l.8 1.4c.1.3.1.6-.1.8l-.6.6a6.5 6.5 0 0 0 3.6 3.6l.6-.6c.2-.2.5-.2.8-.1l1.4.8c.4.2.5.6.4.9-.2.7-1 1.4-1.8 1.4-3.2 0-6.9-3.7-6.9-6.9 0-.8.7-1.6 1.4-1.8Z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-plane" viewBox="0 0 24 24">
+        <path d="M2.5 13.2 21 4l-5.6 17.2-2.6-6.6-6.4-1.4 3.8-3.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-road" viewBox="0 0 24 24">
+        <path d="M7 3 4 21M17 3l3 18M12 4v3M12 10v3M12 16v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24">
+        <rect x="3" y="7.5" width="18" height="12.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3 12.5h18M10.5 12.5v2h3v-2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="i-rings" viewBox="0 0 24 24">
+        <circle cx="9" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="15" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m9 4 2 3 2-3-2-2-2 2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-map" viewBox="0 0 24 24">
+        <path d="M3 5.5 9 3l6 2.5L21 3v15.5L15 21l-6-2.5L3 21V5.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M9 3v15.5M15 5.5V21" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24">
+        <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="12" cy="13.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M12 21s6.5-5.7 6.5-11a6.5 6.5 0 1 0-13 0C5.5 15.3 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+    </svg>
+
+    <script type="module" src="/src/website/main.js"></script>
   </body>
 </html>
