@@ -1,11 +1,8 @@
-import { colors } from './src/theme/colors.js';
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
-      colors,
       fontFamily: {
         sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['Fraunces', 'Georgia', 'ui-serif', 'serif'],
