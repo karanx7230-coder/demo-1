@@ -2077,10 +2077,18 @@ button {
   .header {
     position: fixed;
     inset: 0 0 auto;
+    border-bottom-width: 0;
   }
 
   .header__inner {
     gap: 0.75rem;
+    height: var(--header-h);
+    min-height: var(--header-h);
+  }
+
+  .brand__mark {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .header__actions {
@@ -2109,8 +2117,10 @@ button {
   }
 
   .hero {
-    min-height: calc(100vh - 2rem);
-    min-height: calc(100svh - 2rem);
+    height: auto;
+    margin-top: 64px;
+    min-height: calc(75vh - 48px);
+    min-height: calc(75svh - 48px);
   }
 
   .topbar__inner {
@@ -2127,8 +2137,8 @@ button {
   }
 
   .hero__inner {
-    justify-content: flex-end;
-    padding-block: calc(var(--header-h) + 1.5rem) clamp(2rem, 7svh, 3.5rem);
+    justify-content: center;
+    padding: 24px 20px 32px;
   }
 
   .hero__copy {
@@ -2136,37 +2146,55 @@ button {
   }
 
   .hero__img {
-    object-position: 58% center;
+    top: -14%;
+    height: 114%;
+    object-fit: cover;
+    object-position: center 35%;
   }
 
   .hero__scrim {
-    background:
-      linear-gradient(0deg, rgba(5, 10, 11, 0.96) 0%, rgba(5, 10, 11, 0.82) 34%, rgba(5, 10, 11, 0.45) 64%, rgba(5, 10, 11, 0.08) 100%),
-      linear-gradient(90deg, rgba(5, 10, 11, 0.24), rgba(5, 10, 11, 0.04) 76%);
+    background: linear-gradient(
+      180deg,
+      rgba(10, 12, 16, 0.2) 0%,
+      rgba(10, 12, 16, 0.5) 45%,
+      rgba(10, 12, 16, 0.92) 100%
+    );
   }
 
   .hero__title {
-    font-size: clamp(2.4rem, 11vw, 4rem);
-    line-height: 0.82;
+    font-size: clamp(2.1rem, 8.5vw, 4.5rem);
+    line-height: 1.05;
     text-align: left;
+    color: #fff;
+  }
+
+  .hero__title .accent {
+    color: #F59E0B;
+  }
+
+  /* Keep wrapped section headings from colliding on narrow screens */
+  .display {
+    line-height: 1;
   }
 
   .hero__lede {
     max-width: 27rem;
     margin-top: 1rem;
     font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .hero__actions {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: 0.75rem;
+    gap: 12px;
     margin-top: 1.5rem;
   }
 
   .hero__actions .btn {
     width: 100%;
-    min-height: 3rem;
+    max-width: none;
+    min-height: 3.25rem;
   }
 
   .routes-table__head {
@@ -2231,13 +2259,11 @@ button {
 @media (max-width: 560px) {
   .hero__actions {
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
+    gap: 12px;
   }
 
   .hero__actions .btn {
-    width: min(100%, 22rem);
+    width: 100%;
   }
 
   .hero__stats {
