@@ -215,3 +215,11 @@ forms.forEach((form) => {
 
 const year = document.getElementById('year');
 if (year) year.textContent = String(new Date().getFullYear());
+
+/* Simple page loader: hide after the page loads */
+const loader = document.getElementById('page-loader');
+if (loader) {
+  window.addEventListener('load', () => {
+    loader.classList.add('is-hidden');
+  });
+}

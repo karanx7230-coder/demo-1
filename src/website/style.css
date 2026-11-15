@@ -153,6 +153,35 @@ button {
   transform: translateY(0);
 }
 
+/* Simple page loading indicator */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: var(--bone);
+}
+
+.page-loader__spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid rgba(49, 93, 92, 0.2);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  animation: loaderSpin 0.7s linear infinite;
+}
+
+@keyframes loaderSpin {
+  to { transform: rotate(360deg); }
+}
+
+.page-loader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
 .icon-sprite {
   position: absolute;
   width: 0;
