@@ -41,10 +41,11 @@ Drag-and-drop the `dist/` folder onto https://app.netlify.com/drop also works.
 2. Create a **Google Business Profile** for the business — this is the single biggest
    factor for local searches like "taxi in Mohali". Keep the name, phone and city
    identical everywhere (NAP consistency).
-3. Phone / WhatsApp: **+91 87288 78910** (set across the page — double-check it is the
-   client's real number).
-4. Add a real street address and email if you want them published (there are none on
-   the current site, so none are invented here).
+3. Confirm the three call numbers (**+91 98156 66135, +91 99148 63778,
+   +91 98973 20111**) and the WhatsApp number (**+91 87288 78910**) are correct.
+   The email published on the site is **karnailtours55@gmail.com**.
+4. Add a real street address if it should be published; the site currently lists only
+   Mohali, Punjab.
 5. Get a few real Google reviews — never fake ones.
 6. If you later get a custom domain, update the domain in:
    `index.html` (canonical + OG + JSON-LD), `public/robots.txt`, `public/sitemap.xml`.
