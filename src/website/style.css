@@ -590,7 +590,7 @@ button {
   font-family: var(--display);
   font-weight: 300;
   font-size: clamp(3.1rem, 7vw, 6rem);
-  line-height: 0.96;
+  line-height: 1.06;
   letter-spacing: 0.005em;
   text-transform: uppercase;
   color: var(--bone);
