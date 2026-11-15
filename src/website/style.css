@@ -1883,8 +1883,10 @@ button {
   }
 
   .hero__inner {
-    grid-template-columns: 1fr;
-    gap: 2.2rem;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    justify-items: start;
+    gap: 0;
   }
 
   .hero__copy {

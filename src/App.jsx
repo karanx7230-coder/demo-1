@@ -37,9 +37,9 @@ export default function App() {
 
       <main id="main">
         <Hero />
+        <Journey />
         <Destinations />
         <Fleet />
-        <Journey />
         <Experience />
         <Contact />
       </main>
