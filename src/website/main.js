@@ -10,7 +10,7 @@ const nav = document.getElementById('primary-nav');
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = [...document.querySelectorAll('.nav a')];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const WHATSAPP = '918728878910';
+const WHATSAPP = '919815666135';
 
 /* --------------------------------------------------------------------------
    Header: shadow + hide on scroll down, reveal on scroll up
