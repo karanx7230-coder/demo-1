@@ -38,28 +38,40 @@ export const fleet = [
 
 export const destinations = [
   {
-    name: 'Kashmir',
-    image: '/assets/destinations/kashmir-01.webp',
-    meta: 'Dal Lake · 5–7 days',
-    copy: 'Shikara mornings, chinar trees and a houseboat that rocks you to sleep.',
-  },
-  {
     name: 'Himachal',
     image: '/assets/destinations/himachal-01.webp',
-    meta: 'Manali · 300 km',
-    copy: 'Pine air, river stops and the first snow of the season.',
+    meta: 'Manali · Shimla · Dharamshala',
+    copy: 'See pine forests, mountain villages and winding roads.',
   },
   {
     name: 'Spiti',
-    image: '/assets/destinations/mountains-01.webp',
-    meta: 'High passes · 8 days',
-    copy: 'Cold desert, old monasteries and a road that keeps opening up.',
+    image: '/assets/destinations/mountains-02.webp',
+    meta: 'Kaza · High desert',
+    copy: 'See old monasteries and quiet mountain valleys.',
   },
   {
-    name: 'Ladakh',
-    image: '/assets/destinations/mountains-02.webp',
-    meta: 'Leh · 9 days',
-    copy: 'Thin air, wide skies and the road trip people talk about for years.',
+    name: 'Leh Ladakh',
+    image: '/assets/destinations/highway-aerial.webp',
+    meta: 'Leh · Nubra · Pangong',
+    copy: 'Visit high mountain passes and open roads.',
+  },
+  {
+    name: 'Uttarakhand',
+    image: '/assets/destinations/mountains-01.webp',
+    meta: 'Rishikesh · Auli · Chopta',
+    copy: 'Visit hill towns and riverside spots.',
+  },
+  {
+    name: 'Rajasthan',
+    image: '/assets/destinations/highway-aerial.webp',
+    meta: 'Jaipur · Jodhpur · Udaipur',
+    copy: 'See colorful cities, forts and desert roads.',
+  },
+  {
+    name: 'Kashmir',
+    image: '/assets/destinations/kashmir-01.webp',
+    meta: 'Srinagar · Gulmarg · Pahalgam',
+    copy: 'Enjoy lake trips, green valleys and mountain views.',
   },
 ];
 

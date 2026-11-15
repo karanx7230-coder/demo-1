@@ -191,7 +191,7 @@ forms.forEach((form) => {
       `Pickup: ${from}`,
       `Drop: ${to}`,
       date ? `Date: ${date}` : '',
-      passengers ? `Passengers: ${passengers}` : '',
+      passengers ? `People: ${passengers}` : '',
       service ? `Service: ${service}` : '',
       notes ? `Notes: ${notes}` : '',
     ]
@@ -201,7 +201,7 @@ forms.forEach((form) => {
     const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
 
     if (status) {
-      status.textContent = 'Opening WhatsApp with your details…';
+      status.textContent = 'Opening WhatsApp…';
       status.classList.add('is-visible');
     }
 

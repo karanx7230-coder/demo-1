@@ -386,15 +386,15 @@ button {
 }
 
 .brand__mark {
-  width: 2.3rem;
-  height: 2.3rem;
+  width: 4.8rem;
+  height: 4.8rem;
   object-fit: contain;
-  transition: transform 0.4s var(--ease);
+  transition: transform 0.9s var(--ease);
 }
 
-.brand:hover .brand__mark {
+/* .brand:hover .brand__mark {
   transform: rotate(8deg);
-}
+} */
 
 .brand__name {
   display: flex;
@@ -536,11 +536,15 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   Hero: copy left, booking form right
+   Hero
 -------------------------------------------------------------------------- */
 
 .hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
   overflow: hidden;
   background: var(--ink);
   color: var(--bone);
@@ -561,21 +565,28 @@ button {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(0deg, rgba(5, 10, 11, 0.82) 0%, rgba(5, 10, 11, 0.38) 48%, rgba(5, 10, 11, 0.3) 100%),
-    linear-gradient(90deg, rgba(5, 10, 11, 0.52), transparent 66%);
+    linear-gradient(90deg, rgba(5, 10, 11, 0.86) 0%, rgba(5, 10, 11, 0.58) 42%, rgba(5, 10, 11, 0.12) 76%, transparent 100%),
+    linear-gradient(0deg, rgba(5, 10, 11, 0.55) 0%, rgba(5, 10, 11, 0.16) 58%, rgba(5, 10, 11, 0.18) 100%);
 }
 
 .hero__inner {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.85fr);
-  align-items: center;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  padding-block: clamp(3.2rem, 7vh, 5.5rem);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-block: clamp(3.5rem, 9svh, 7rem) clamp(2rem, 5svh, 3.5rem);
+}
+
+.hero__copy {
+  width: 100%;
+  max-width: 56rem;
 }
 
 .hero__title {
+  max-width: 100%;
   font-family: var(--display);
   font-weight: 400;
   font-size: clamp(3.1rem, 7vw, 6rem);
@@ -602,7 +613,7 @@ button {
 
 .hero__lede {
   max-width: 30rem;
-  margin-top: clamp(1rem, 2vh, 1.4rem);
+  margin-top: clamp(1.2rem, 2.4vh, 1.7rem);
   font-size: clamp(0.95rem, 1.25vw, 1.1rem);
   line-height: 1.6;
   color: rgba(244, 239, 230, 0.8);
@@ -612,8 +623,12 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.9rem;
-  margin-top: clamp(1.4rem, 3vh, 1.9rem);
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3vh, 2rem);
+}
+
+.hero__actions .btn {
+  min-height: 3rem;
 }
 
 .hero__stats {
@@ -1177,9 +1192,11 @@ button {
 }
 
 .dest-card__tag {
-  font-size: 0.58rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
+  font-family: var(--display);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
   text-transform: uppercase;
   color: var(--amber);
 }
@@ -1839,12 +1856,8 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   Sticky mobile CTA
+   Reveal animations
 -------------------------------------------------------------------------- */
-
-.sticky-cta {
-  display: none;
-}
 
 /* --------------------------------------------------------------------------
    Reveal animations
@@ -1883,10 +1896,7 @@ button {
   }
 
   .hero__inner {
-    grid-template-columns: minmax(0, 1fr);
-    align-items: start;
-    justify-items: start;
-    gap: 0;
+    padding-block: clamp(3rem, 8svh, 5rem) clamp(1.75rem, 4svh, 2.5rem);
   }
 
   .hero__copy {
@@ -2035,15 +2045,51 @@ button {
 @media (max-width: 760px) {
   :root {
     --header-h: 4rem;
+    --gutter: 20px;
+  }
+
+  .header {
+    position: fixed;
+    inset: 0 0 auto;
+  }
+
+  .header__inner {
+    gap: 0.75rem;
+  }
+
+  .header__actions {
+    gap: 0.5rem;
+  }
+
+  .header__phone {
+    display: none;
+  }
+
+  .header__actions .header__wa {
+    display: inline-flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    min-height: 2.5rem;
+    padding: 0;
+  }
+
+  .header__wa-label {
+    display: none;
+  }
+
+  .header__wa svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh;
   }
 
   .topbar__inner {
     justify-content: center;
     text-align: center;
-  }
-
-  .header__actions .btn {
-    display: none;
   }
 
   .brand__name {
@@ -2055,11 +2101,46 @@ button {
   }
 
   .hero__inner {
-    padding-block: 2.8rem;
+    justify-content: flex-end;
+    padding-block: calc(var(--header-h) + 1.5rem) clamp(2rem, 7svh, 3.5rem);
+  }
+
+  .hero__copy {
+    max-width: none;
+  }
+
+  .hero__img {
+    object-position: 58% center;
+  }
+
+  .hero__scrim {
+    background:
+      linear-gradient(0deg, rgba(5, 10, 11, 0.96) 0%, rgba(5, 10, 11, 0.82) 34%, rgba(5, 10, 11, 0.45) 64%, rgba(5, 10, 11, 0.08) 100%),
+      linear-gradient(90deg, rgba(5, 10, 11, 0.24), rgba(5, 10, 11, 0.04) 76%);
   }
 
   .hero__title {
-    font-size: clamp(2.8rem, 12vw, 4.6rem);
+    font-size: clamp(2.4rem, 11vw, 4rem);
+    line-height: 0.82;
+    text-align: left;
+  }
+
+  .hero__lede {
+    max-width: 27rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  .hero__actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    min-height: 3rem;
   }
 
   .routes-table__head {
@@ -2115,59 +2196,22 @@ button {
     grid-column: 1 / -1;
   }
 
-  .footer {
-    padding-bottom: 3.5rem;
-  }
-
   .footer__cta {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .sticky-cta {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 80;
-    display: grid;
-    grid-template-columns: 1fr 0.62fr;
-    background: rgba(11, 15, 16, 0.96);
-    border-top: 1px solid rgba(244, 239, 230, 0.14);
-    backdrop-filter: blur(10px);
-  }
-
-  .sticky-cta a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    min-height: 3.25rem;
-    font-size: 0.62rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--bone);
-  }
-
-  .sticky-cta a:first-child {
-    background: var(--amber);
-    color: var(--ink);
-  }
-
-  .sticky-cta a:last-child {
-    border-left: 1px solid rgba(244, 239, 230, 0.16);
   }
 }
 
 @media (max-width: 560px) {
   .hero__actions {
+    width: 100%;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
+    gap: 0.65rem;
   }
 
   .hero__actions .btn {
-    width: 100%;
+    width: min(100%, 22rem);
   }
 
   .hero__stats {
