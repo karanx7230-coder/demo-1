@@ -2083,8 +2083,8 @@ button {
   }
 
   .hero {
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: calc(100vh - 2rem);
+    min-height: calc(100svh - 2rem);
   }
 
   .topbar__inner {
