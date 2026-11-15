@@ -588,9 +588,9 @@ button {
 .hero__title {
   max-width: 100%;
   font-family: var(--display);
-  font-weight: 400;
+  font-weight: 300;
   font-size: clamp(3.1rem, 7vw, 6rem);
-  line-height: 0.86;
+  line-height: 0.96;
   letter-spacing: 0.005em;
   text-transform: uppercase;
   color: var(--bone);
