@@ -23,7 +23,7 @@ A single-page, scroll-driven **spatial travel desk**: the visitor stands inside 
 **Business facts**
 
 - Name: Karnail Tour and Travels
-- Tagline: *Travel Safe. Travel Happy.*
+- Tagline: *your journey, our commitment.*
 - Base: Mohali, Punjab
 - Phone / WhatsApp: +91 98765 43210 *(confirm real number before launch)*
 - Hours: 24/7
@@ -280,7 +280,7 @@ Disclaimer: “Reviews shared by our riders · Names shortened for privacy”.
 ### 7.12 Footer
 
 - Monogram + “Karnail / TOUR & TRAVELS”
-- Blurb: “Safe, comfortable and reliable cabs and tours from Mohali. Travel safe. Travel happy.”
+- Blurb: “Safe, comfortable and reliable cabs and tours from Mohali. your journey, our commitment.”
 - WhatsApp and phone links.
 - Columns: Explore · Services · Reach us.
 - Giant ghost wordmark “Karnail” at 7% opacity.
@@ -332,7 +332,7 @@ After 620px of scroll, a fixed ink bar appears with two thumb-sized buttons: **C
 ## 11. SEO / meta
 
 - Title: “Karnail Tour and Travels | Cabs & Tours in Mohali”
-- Description: “Karnail Tour and Travels — safe, comfortable cabs and curated tours from Mohali. Airport transfers, outstation cabs, corporate travel, weddings and tour packages. Travel Safe. Travel Happy.”
+- Description: “Karnail Tour and Travels — safe, comfortable cabs and curated tours from Mohali. Airport transfers, outstation cabs, corporate travel, weddings and tour packages. your journey, our commitment.”
 - `TravelAgency` JSON-LD with name, slogan, telephone, Mohali address, area served and 24/7 opening hours.
 - Favicon: pine rounded square with cream “K” and marigold dot.
 

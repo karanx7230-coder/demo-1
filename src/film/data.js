@@ -9,7 +9,7 @@
 export const business = {
   name: 'Karnail Tour and Travels',
   shortName: 'Karnail',
-  tagline: 'Travel Safe. Travel Happy.',
+  tagline: 'your journey, our commitment.',
   phone: '+918728878910',
   phoneDisplay: '+91 98765 43210',
   whatsapp: '918728878910',
