@@ -16,7 +16,7 @@ export default function App() {
     const timer = window.setTimeout(refresh, 800);
 
     window.addEventListener('load', refresh);
-    if (document.fonts?.ready) document.fonts.ready.then(refresh).catch(() => {});
+    if (document.fonts?.ready) document.fonts.ready.then(refresh).catch(() => { });
 
     return () => {
       window.clearTimeout(timer);
@@ -37,9 +37,10 @@ export default function App() {
 
       <main id="main">
         <Hero />
-        <Journey />
-        <Fleet />
         <Destinations />
+      
+        <Fleet />
+          <Journey />
         <Experience />
         <Contact />
       </main>
